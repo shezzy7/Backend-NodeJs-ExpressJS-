@@ -1,0 +1,5 @@
+NPM(Node Package Manager).
+Package is like a piece of code ,written by someone for a specific task and  he wraps this code into such a special form that other peoples can use it and this form is called package.
+For using these packages we use 'npm'.So we can take npm as a library of packages which contain many packages in it(eg. reactJs,expressJs can be installed in our system using npm etc).
+npm is a command line tool ,mean we can install and manipulate our packages using npm through our command line.
+npm comes with NODE and we don't need to install it separately.

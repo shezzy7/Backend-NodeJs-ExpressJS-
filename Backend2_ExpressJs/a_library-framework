@@ -1,0 +1,4 @@
+Library :- Library is a collection of pre-written code(packages) that can be used to perform specific tasks.eg axios
+We have full control over libraries.
+
+Framework :- Fromework is also a collection of pre-written code that provides a structure for developing software applications. eg-> express/vue

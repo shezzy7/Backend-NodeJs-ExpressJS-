@@ -1,0 +1,9 @@
+Express :- It is a Node.js web application framework that helps in creating web aplications.It is used for server side programming(backend).
+Our frontend code works like a client it sends requests to server side and we will build this server side(backend) with help of express.
+What express do:-
+Express listen for incoming responses.
+It parses data(mean it can receives data in any form but it will convert this data into js form )
+Matches response with routes(from which side request has came).
+Send suitable response according to given request.
+
+Express is a framework but basically its a package in npm and we can install it through npm and this package contain diffrent tools and utilities which help us in server side programming.

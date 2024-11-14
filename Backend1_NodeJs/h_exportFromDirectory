@@ -1,0 +1,5 @@
+For exporting files from a directory to another we use a simmliar but a little diffrent method.
+In directory from where we want to export files we create a index.js file and import all other files in this file.
+And then combine all those files in an array in index file from there export this file which contains all the files in it.
+Now in directory where we want to import these files we just write require("directoryNameFromWhereWeWantToImportFiles") and it will do what? it will start searching file with name index.js will import data exported from it.
+index file works like a entry point as main function in java/cpp etc.

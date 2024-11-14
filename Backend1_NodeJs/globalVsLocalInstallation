@@ -1,0 +1,3 @@
+We install our packages for our specific directories and we cannot use them out of those directories.
+So this is kind a local installation but we can also install packages globaly so that we can use them anywhere in our system.For this we can ask for help from chatGpt or any other youtube video.
+But installing packages globally is not recomended at all. 

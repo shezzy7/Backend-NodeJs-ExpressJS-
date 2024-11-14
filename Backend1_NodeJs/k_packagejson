@@ -1,0 +1,6 @@
+Package.json files contains descriptive and and functional metadata about a project,such as a name,version and dependencies.
+This file contains all the data about our depencies.
+If we want to send our project to any of our friend then instead of sending all the data including our dependencies ,we can simply send this package.json file with as it contains info about all the dependencies used in this project and it will automatically install all the dependencies.
+If we lost our node-modules folder but we have this file package.json in our system then we can retrieve our node-modules directory by just writing a command 'npm install'.
+We can also create our own package.json file by writing a command in our directory 'npm init' and then it will ask for basic info and we will provide and finaly it will create our package.json file in our directory.
+And whenever we will install a new dependencie then it will be added to our package.json file.

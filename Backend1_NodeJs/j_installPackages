@@ -1,0 +1,4 @@
+If we want to use a package in any place then go to that particluar directory and install this package there and this package will have a scope inside this directory only.
+When we install a package through npm then it creates three new items in our directory.One is a directory named node-modules,second two js files named package-lock.json and thrid is package.json .
+node-modules folder contains every installed dependencies for your project.
+package-lock.json file contains record of the exact version of  installed dependency,including its sub-dependencie and its versions.

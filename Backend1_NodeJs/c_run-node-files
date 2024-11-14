@@ -1,0 +1,1 @@
+For running js code wriiten in our files ,go to that directory where our js file is present , open terminal through this directory,and run command 'node fileName.js'.And it will execute all the code written in js.

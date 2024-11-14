@@ -1,0 +1,6 @@
+REPL:-Node REPL is just like a console section provided on broweser for writing js code.But out of this browser's environment Node provides us a environement on which we can write code , this environment is known as Node REPL. R stands for 'read',E stands for 'evaluate',P stands for 'print' and L stands for 'loop'.
+Basically it means that we can write and print our javascript code on node.For doing this first we have to install node in our pc through nodeJs web.And then on terminl write command 'node' and after this we can write javascript code in it.But during this we cannot write any terminal command.For this we have to exit from node.For exiting write '.exit' command.
+
+In REPL terminal for getting helping command we can write command '.help' and it will give all the necessry commands.
+Like window object on browser REPL also contains an object 'global'.
+But throgh REPL we cannot manipulate our HTML section like we do on browser environment.

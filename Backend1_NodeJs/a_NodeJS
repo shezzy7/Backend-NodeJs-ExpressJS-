@@ -1,0 +1,4 @@
+Node Js is a JavaScript runtime environment.Initialy javascript code was only can be run on browser and cannot run on any other environment.So to overcome this problem Node Js was introduced in 2009.Which provides a runtime environement for javascript.
+We use Node js bcz it is one of most popular frameworks for backend.And it is totally based on javascript so we don't need to learn any extra language for this.It is used for server side programming.
+We take it just as a runtime environement in which javascript code runs and also provides some other usefull tools.
+Node Js is not a programming Language nor a libray or framework.

@@ -1,0 +1,5 @@
+An object named as 'process' is present in our REPL.This object contains many properties we can check them by writing process in our REPL.
+Process provides information about,and control over,the current node.js process.
+
+This process contains a property 'argv'.It contains two values one is node path and other is arguments which we got by repl.
+process.argv returns an array containing command line arguments passed when the node.js process was launched.

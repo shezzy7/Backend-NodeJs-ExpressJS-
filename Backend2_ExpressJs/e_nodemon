@@ -1,0 +1,3 @@
+/* nodemon is a npm package which automatically restart server with code changes.As we know whenever we made evena little change in our code we restart our server to see changes.So to preventing fron this nodemon was launched and nodemon automatically restarts our server whenever any change is maded to our code.
+ Before using we have to install it by command -> npm install nodemon  .But globally installation of nodemon is recomended.For installing it globally we write command -> npm install -g nodemon
+For starting our server on console we write nodemon fileName.js instead of node fileName.js */

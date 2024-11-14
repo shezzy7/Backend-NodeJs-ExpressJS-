@@ -1,0 +1,9 @@
+// In javaScripts ES6 version a new feature was added which was same as require but it has some difference in functionality.
+// If we want to export some thing from a file then we write export with varName/funcName which is going to be exported.And we can export as many things from our file as many we want.
+// And for importing data in another file we write -> import {varName/funcName} from "fileNameFromDataIsGoingToBeImported";
+// And then we can use it in our this file anywhere we want.
+// And for using this we have to add "type":"module" in our package.json file for using import export.
+// We can use one from both require method or import/export method only and we cannot use both of them together.
+
+// Pros:We can't selectivley load only the pieces we need with require but with import,we can selectively only the pieces we need,which can save memory.
+// Loading is synchronous for 'require' but can be asynchronous for 'import'.
