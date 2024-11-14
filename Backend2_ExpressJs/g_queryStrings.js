@@ -7,4 +7,13 @@ app.listen(8000,()=>{
     console.log("Listening on port no : ",8000);
 });
 
-app.get()
+app.get("/search" , (req,res)=>{
+    //req's mehtod query contains all the query strings in it as key value paris and we can access then using it
+    //for example here if here we search -> localhose:8000/search?q=apple&color=red
+    //then this query method will create an object and in this object it will create two key value pairs like ->{q : "apple" , color : "red"} 
+    let {q , color} = req.query;
+    if(!q){
+        res.send("<h1>Searched for nothing </h1>");
+    }
+    res.send(`<h1>You have searched for ${q} of color ${color}!</h1>`);
+})
