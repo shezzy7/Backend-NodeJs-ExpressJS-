@@ -7,7 +7,28 @@
 </head>
 <body>
     <h1>Weclome to <%=username%>'s Instagram </h1>
-    <button>Follow</button>
+    <p id="showFollowers"></p>
+   
+    <button id="follow" >Follow</button>
     <button>Comment</button>
+
+    <!-- below code is writen by me just for fun   -->
+    <script>
+        {
+            let followers=0;
+            let btn = document.querySelector('#follow');
+            btn.style.backgroundColor = "aqua";
+            btn.style.padding = '10px';
+            btn.style.border="none";
+            btn.style.borderRadius = "10px";
+            btn.style.cursor = "pointer";
+            document.querySelector('#showFollowers').innerHTML = `Followers : ${followers}`;
+            btn.addEventListener('click',()=>{
+                followers++;
+
+                document.querySelector('#showFollowers').innerHTML = `Followers : ${followers}`;
+            })
+        }
+    </script>
 </body>
 </html>
