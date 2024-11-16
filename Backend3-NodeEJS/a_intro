@@ -1,0 +1,8 @@
+EJS stands for 'Embeded Javascript Templates'
+EJS is just a simple templating language that lets you generate HTML markup with plain JavaScript.
+Basically EJS helps us in creating templates for our applications.For example if we go on instagram and search for an account.Then it will display info of this acount on screen and this display will have a specific layout.Then if we search for an other account then we see that only inner data will be changed but basic layout for all the accounts will be same.Mean at top userName,then some followers and then at bottom there will be posts presnet in cards.                                                                                                                                                                l
+Now if we search for another account then we will see that the layout of page will be same like previous only inner data will be different.
+So does the companies write code for every accounts layout?NOP!They have created just a single blueprint and they apply this blueprint to all the accounts.
+So EJS do the same funtionality for us.We will see it furthure more.
+
+So EJS helps in creating and rendering files of code in our response 
