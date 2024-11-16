@@ -1,11 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice Roll</title>
 </head>
+
 <body>
-    <h1>Dice Roll value is : <%= num%></h1>
+    <h1>Dice Roll value is : <%= diceVal%>
+    </h1>
+    <!-- for conditional statements we use an ejs tag <% %> -->
+    <!-- we can see all these tags on ejs.co web -->
+    <% if(diceVal==6){%>
+        <h2>Nice!Roll dice again</h2>
+    <%}%>
+    
 </body>
+
 </html>

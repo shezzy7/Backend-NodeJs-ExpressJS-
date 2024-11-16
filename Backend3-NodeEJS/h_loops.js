@@ -1,0 +1,1 @@
+//we can also use loops in ejs i have done in displaying name of all the followers in instagram file
