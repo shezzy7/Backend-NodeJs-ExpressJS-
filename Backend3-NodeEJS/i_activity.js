@@ -8,6 +8,7 @@ let port = 8000;
 app.listen(port , ()=>{
     console.log(`Listening on Port number : ${port}`);
 })
+
 app.set("view engine" , "ejs");
 app.get("/ig/:username",(req,res)=>{
     let instaData = require("./data.json");

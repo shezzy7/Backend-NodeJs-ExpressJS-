@@ -1,0 +1,3 @@
+In our ejs files we can also include other files.Mean if we want to include a complete ejs file in another file then we can do this by using an ejs tag -> <%-
+This tag outputs the unescaped value into the template.Mean as we see tag <%= converts the value of variables inside it to strign and print it on html page.But this tag <%- does not converts the given files data into a string instead it converts it into a unescaped value mean original form of data as it is presnet in file(html code).
+For example we add head of html code in every file.But if we place head's code in a file and then using this tag we can add head in each html file instead of writing whole head's code.

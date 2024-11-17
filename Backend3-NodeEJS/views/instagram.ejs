@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram Search</title>
-</head>
+<%- include("./head.ejs") %>
 <body> 
-    <h1>Weclome to <%=username%>'s Instagram </h1>
+    <h1>Weclome To <%=username%>'s Instagram </h1>
 
     <button>Follow</button>
     <button>Comment</button>
     <br>
-    <h2>Accounts that follow you</h2>
-    <% for(let name of followers){%>
-        <li><%=name%></li>
-    <%}%>
+    <%- include("./footer.ejs"); %>
 </body>
 </html>
