@@ -1,0 +1,2 @@
+Get method is used to get responses from server.
+In Get method we send data in query strings and this data has some limits with respect to its length , and whatever type of data we pass in it is converted to string,and also main drawback of get method is that our data is present in our URL , which mean that anyone can see this data thrpugh our url.
