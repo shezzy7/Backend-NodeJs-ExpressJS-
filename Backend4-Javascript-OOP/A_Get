@@ -1,2 +1,11 @@
+Get 
 Get method is used to get responses from server.
 In Get method we send data in query strings and this data has some limits with respect to its length , and whatever type of data we pass in it is converted to string,and also main drawback of get method is that our data is present in our URL , which mean that anyone can see this data thrpugh our url.
+In our file B_Post_Get.html When we input our data in post method's form and press enter button then in its submission path's query string it also contains username and password , which is bad as if we sending our sensative info then it is visible to anybody.So this thing makes our get method less good.
+Example:When we search for something on google then our request is shown in query strings as this request is taken by google using Get method.And googgle in response send some data back to us.So get method is good when we want some data back from server.
+
+
+Post Method
+It is used to post(send) something to server(for create/read/update).For example when we upload we file on google drive then we sendign request to server but need no data back from it.
+Data sent via request body(any type of data).And is not visible in URL also there is no limit on length of data.So generally we use get method when we want to receive some data in response from server and use post method when we want to send some data to the server.
+Both methods can replace each other mean we can use get method for send some data to server and also can use post method for receiving some data from server.But it is a good practice to use each for its specific task.
