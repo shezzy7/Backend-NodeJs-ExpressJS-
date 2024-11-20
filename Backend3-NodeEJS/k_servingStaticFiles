@@ -1,0 +1,3 @@
+With the help of include method we can add ejs templates only.But what if we want to add a templete also with its css file,js file.Then for this purpose we use a different method we place css file,js file and ejs file in a folder and make access of this folder to our file we want to render it.
+for this use a app method , whose syntax is as -> app.use(express.static("folderName"));
+Now lets suppose we have a css file in a folder named public and in our ejs file in another folder to whome our response is going to render , we want to apply this css file styling then we can simpli add this file name in href tag and this will find style.css in public named folder will apply styling according to this one.

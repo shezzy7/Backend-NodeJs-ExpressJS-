@@ -1,0 +1,4 @@
+For getting data from client in post method we have to do some specific steps.AS this data is not present in our URL so we cannot get it by query parameters.
+We have built in methods for getting data in post request type.
+As we know that the data is present in request body.But for making this data availabe to file in post method's path we have a method of req which contains all the data sent to server in body method
+For example in our html form we send a user name to a server and this server want to get value of this username then we can use req.body in way which we have used in B_Post_Get.html file.

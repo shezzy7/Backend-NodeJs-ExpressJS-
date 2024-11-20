@@ -7,10 +7,10 @@ let app = express();
 app.listen(8080 , ()=>{
     console.log("Listening on port : ",8080);
 })
-
+        
 app.get("/",(req,res)=>{
     res.send("Connected to root path");
-})
+})              
 /*
 app.get("/:username",(req,res)=>{
     //here username will be taken as name of variable as has : before its name.
@@ -24,5 +24,6 @@ app.get("/:username",(req,res)=>{
 //we can pass as many variables as many we want like if we also want to pass id of username then
 app.get("/:user/:id" , (req,res)=>{
     console.log(req.params);
+    res.send(`<h1>Welcomd to my web ${req.params.user} with id -> ${req.params.id}`);
     
 })
