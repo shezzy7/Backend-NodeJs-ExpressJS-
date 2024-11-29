@@ -1,0 +1,11 @@
+form{
+    text-align: center;
+    
+
+}
+input{
+    padding: 10px;
+    background-color: rgb(183, 220, 220);
+    border: 2px solid aqua;
+    border-radius: 5px;
+}

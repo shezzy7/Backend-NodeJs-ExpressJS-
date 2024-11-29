@@ -1,0 +1,11 @@
+Every object in javascript has a built in property which is known as Prototype.The prototype in itself is an object ,  so the prototype will have its own prototype , making what's called a prototype chain.The chain ends when we reach a prototype that has null for its own prototype.
+Prototypes are the mechanism by which javascript objects inherit features from one another.It is like a simple template object that all the objects inherit methods and properties form without having their own copy.
+
+For example if on browser's console we create an array and  print it on this console  , then on printing it we  will show all the items elements of array in key,value pair.Where indexes will be present like keys and all the values will be present , each in-fornt of its index.So it shows that arrays in js are objects in themselve.And at last there will be an object named prototype.This object contains all the methods associated with array like push,pop,indexOf etc.And our array uses these methods from this prototype.
+So this prototype is a template which contains all the methods that array can use in it.And every time an array is declared a protype is assigned to it.So do not create prototype for each array while declaring it rather a template has been builded only once and it is associated with this array.
+So can also add additional methods to any array which will be assigned specifically to this particular array.
+
+We can also see these methods in prototype by writing 'arrayName.__proto__' on console.
+We can also change functionalities of methods associated with these arrays.Like we can also change functionality of push method from adding a given element in array to printing this element on console only.
+For thid we write -> arrayName.__proto__.push = (n) =>{console.log("printing statement")};
+After doing this on which array we have applied this , whenever we will use push method , no element will be added in this array only a statment will be printed on console.

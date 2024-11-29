@@ -1,0 +1,3 @@
+REST stands for Representational state transfer.
+REST is an architectural style that defines a set of constrains to be used for creating web services.
+From REST a new concept comes into existance which is known as 'Restfull APIs'.This means that APIs that are builded under rules of rest.There is a variety of apis present , but the apis that are builded by following rest are restfull apis.so REST is nothing else than a piece of rules which are kept in mind while creating something.

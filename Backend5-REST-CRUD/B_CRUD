@@ -1,0 +1,11 @@
+CRUD => CRUD stands for create ,read , update ,delete.
+For performing these operations on our data we use following verbs :-
+    GET : retrieves resources
+    POST : submits new data to the server
+    PUT : updates existing data
+    PATCH : updates existing data partially
+    DELETE : removes data
+So we use these request methods for performing operation like create,read , update , delete
+So in this chapter , following things are done -> we will create a page for example quora.There we will ad functionalities of writing post , editing those posts , viewing detail of each post and deleting a post.And for building all these functionalities we going to write our restfull APIs.
+Resource :-  That thing on which we are going to perform our crud operations.Like posts here.Tweets on twitter is a kind of resource.If we are writing apis for users then users are our resource.So as here we are manipulating with posts here so posts are our resources.
+
