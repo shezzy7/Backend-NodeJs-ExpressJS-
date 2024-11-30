@@ -1,8 +1,8 @@
 h1{
-    color: maroon;
+    color: rgba(128, 0, 0, 0.648);
 }
 .post{
-    background-color: blanchedalmond;
+    background-color: rgba(128, 0, 0, 0.715);
     max-width: 300px;
     border: white 1px solid;
     border-radius: 10px;
@@ -12,4 +12,7 @@ h1{
 }
 .user{
     font-style: italic;
+}
+.time{
+    color:black;
 }

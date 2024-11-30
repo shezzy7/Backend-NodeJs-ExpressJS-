@@ -3,25 +3,33 @@ let app = express();
 let port  = 8080;
 
 let path = require("path");
-app.use(express.urlencoded({extended:true}));//for parsing data in such fornate that express can understand and use.
+app.use(express.urlencoded({extended:true}));//for parsing data in such formate that express can understand and use.
 app.set("view engine" , "ejs");//allowing rendering of ejs files
-app.set("views" , path.join(__dirname , "views"));//setting views folder as default of ejs files
+app.set("views", path.join(__dirname , "views"));//setting views folder as default of ejs files
 app.use(express.static(path.join(__dirname,"public")));//for getting css file from this folder
 
-app.listen(port , ()=>{
+const methodOverride = require("method-override");
+app.use(methodOverride('_method'));
+//As we know that each post should have unique id for seeing it in detail/editing/deleting or for performing any operation on a specific post and this post will be identifed uniquely on the basis of this id.For assiging an id to eac post which should be unique we use a built-in method known as UUID(universally unique identifier).
+//First we need to require it
+const {v4 : uuidv4} = require("uuid");
+
+    app.listen(port , ()=>{
     console.log(`Listening on port number : ${port}`);
 })
-
+let postTime = new Date();
 let data = [     
     {
-        id:"1a",
+        id:uuidv4(),
         username  :"shezzy",
-        content : "Into the same river , no man can enter twice"
+        content : "Into the same river , no man can enter twice",
+        time:postTime
     } , 
     {
-        id:"2b",
+        id:uuidv4(),
         username : "hania" , 
-        content : "Creamy eyes in the Silvery chest"
+        content : "Creamy eyes in the Silvery chest",
+        time:postTime
     }
 ]
 
@@ -35,7 +43,11 @@ app.get("/posts/new" , (req,res)=>{//route for creating a new post
 
 app.post("/posts" , (req,res)=>{//adding post to data after new post will be submitted. 
     let {username , content} = req.body;//destructuring from req dody as in post method data is present in request body
-    data.push({username , content});//push new posts info in our array data
+    //assign a unique id
+    let id = uuidv4();
+    let time = new Date();
+    
+    data.push({id,username , content , time});//push new posts info in our array data
     // res.send("Post created successfully");//send response back.
     res.redirect("/posts");
 })
@@ -57,6 +69,38 @@ app.get("/posts/:id" , (req,res)=>{
     else{
         res.send("Invalid id , no post exists with this id");
     }
+})
+
+app.get("/posts/:id/edit" , (req,res)=>{
+    let {id} = req.params;
+    let post = data.find((d)=>id==d.id);
+    if(post){
+
+        res.render("edit.ejs" , {post});
+    }
+    else{
+        res.send("no post found");
+    }
+})
+// For editing a post we use patch method.But our forms in html do not support patch method we can use only get or post method for our requests.But for editing we need a patch request type.For this purpose we use method-override functionality of methods.This method will do what it will change the request(eg. get or post) type to given request type(patch,put,delete).
+//First we have to install it by terminal using command -> npm i method-override
+//we can read about it on mdn
+
+app.patch("/posts/:id" , (req, res)=>{
+    let newContent = req.body.content;
+    let {id} = req.params;
+    let post = data.find((p)=>id==p.id);
+    post.content = newContent;
+    res.redirect("/posts");
+   
+})
+
+// Deleting a post
+app.delete("/posts/:id" , (req,res)=>{
+    let {id} = req.params;
+    data = data.filter((p)=>id!==p.id);
+    
+    res.redirect("/posts");
 })
 app.get("*" , (req,res)=>{//for all invalid routes this will be called
     res.send("Invalid route.Nothing found on this route! ")
