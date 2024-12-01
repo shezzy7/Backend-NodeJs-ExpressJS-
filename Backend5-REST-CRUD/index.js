@@ -3,11 +3,12 @@ let app = express();
 let port  = 8080;
 
 let path = require("path");
-app.use(express.urlencoded({extended:true}));//for parsing data in such formate that express can understand and use.
+app.use(express.urlencoded({extended:true}));//for parsing data in such formate that express can understand and use.When we want to get data from request body we have to write this line of code as it converts data present in request body into a special form that express can understand.
 app.set("view engine" , "ejs");//allowing rendering of ejs files
 app.set("views", path.join(__dirname , "views"));//setting views folder as default of ejs files
 app.use(express.static(path.join(__dirname,"public")));//for getting css file from this folder
 
+//for overriding a method over another we have to use this funtionality of express known as method-override.We are using this because while updating or deleting a post/data we need patch/put and delete method respectively but we can write only one of two methods name in method section post,get.So for overriding patch,delete over get,post we use this this functionality of express. 
 const methodOverride = require("method-override");
 app.use(methodOverride('_method'));
 //As we know that each post should have unique id for seeing it in detail/editing/deleting or for performing any operation on a specific post and this post will be identifed uniquely on the basis of this id.For assiging an id to eac post which should be unique we use a built-in method known as UUID(universally unique identifier).
