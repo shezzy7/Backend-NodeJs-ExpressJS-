@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="/edit.css">
+</head>
+<body>
+    <h2>You're updating user : <%=user.email%></h2>
+    <form action="/user/<%=user.id%>?_method=patch" method="post">
+        <textarea name="newUsername">
+            <%=user.username %>
+        </textarea>
+        <input type="password" placeholder="Enter your password here to apply changes" name = "formPass" required>
+        <%if(errorMsg){%>
+            <p style="color: red;"><%=errorMsg%></p>
+            <%}%>
+        <button>Update</button>
+    </form>
+</body>
+</html>

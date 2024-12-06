@@ -1,0 +1,7 @@
+// We write commands in a file named-> fileName.sql
+// And we execute this file on terminal by command -> source fileName.sql
+// but before all of this we have to first make mysql environment on our command line interface able to execute mysql file. and commands and for this we do following things
+// i-Go to setting>system>about>advance system setting>environment variable>in system variables click on path and edit->enter path of bin directory of mysql folder , which usually is C:\Program Files\MySQL\MySQL Server 8.0\bin and click on ok and close the window
+
+// now for running and executing sql files/commands on cli write the command -> mysql -u root -p
+// and it will create an environment of mysql where we  can write commands execute sql files.Andfor coming out of this mysql encironement we wrtie queueMicrotask
