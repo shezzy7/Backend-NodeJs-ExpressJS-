@@ -16,3 +16,11 @@ For checking in which database our mongosh is working we write command db and it
 
 In mongo data is stored in a special formate known as BSON faormate.Mean here data is present in binary formate.
 We can see differencess between json and bson on website-> mongodb.com/json-and-bson
+
+Document: Mongo stores data in form of documents(BSON docs)
+Collection: MongoDb stores documents in colllections.
+
+We can take documents as s tuple/row in a table.
+After combining some documents toghether in a single entity we call it a collection.For understanding we can take our collection as a table.When all the connections combine together they make a database.
+
+When we insert document in a collection then this data is some js formate but after inserting it is converted to bson formate.
