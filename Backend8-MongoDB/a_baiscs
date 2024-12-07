@@ -1,0 +1,18 @@
+MongoDb is a non relational database , mean data in this database is not stored in tables.
+
+For using it we need to install it through their web.And also need to add its bin bath in environmental vaiables.
+After installing mongodb we also need to install mongodb shell for web.
+
+command for starting mongodb shell on terminal -> mongosh
+command for creating and use a new database -> use databaseName
+for seeing all the database in the mongodb-> show dbs
+for quiting mongo shell-> quit
+Mongo shell also works like js runtime environment.
+
+When we write command mongosh then it creates a dummy database named test in mongodb and sets this database by default for performing operation on it.
+When we write command for creating another database then it not only creates another database but also starts using it and the new database remains temporary untill we insert some data in this.If we create a new database in mongoshell and quit our mongosh without inserting any data in this database then this database will be removed automatically.
+
+For checking in which database our mongosh is working we write command db and it returns name of database in which we are working.
+
+In mongo data is stored in a special formate known as BSON faormate.Mean here data is present in binary formate.
+We can see differencess between json and bson on website-> mongodb.com/json-and-bson
