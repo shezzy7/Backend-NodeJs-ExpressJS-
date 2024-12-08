@@ -1,0 +1,11 @@
+Like in sql mongodb also contians many operators.Like operators for applying conditions on queries.
+We can go on -> https://www.mongodb.com/docs/manual/reference/operator/query/ 
+for seeing different type of operators.
+
+Example we want to find documents where marks are greater then 75 -> db.collectionName.find({marks:{$gt:75}})
+we write our operator's name with a $ sign.
+
+So like this we have many comparison operatores , logical , element , evaluation , Geospatial , Array , bitwise , Projection operators , Miscellaneous Operators and many more. We can find all of these on like above.
+
+If we want to print to document where marks are greater then 80 or city is multan -> db.connectionName.find({$or:[{marks : {$gt:75}} , {city:"Multan"}]})
+

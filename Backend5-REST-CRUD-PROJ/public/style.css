@@ -1,0 +1,184 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fafafa; /* Light background */
+    color: #333; /* Darker text for readability */
+}
+
+/* Posts Container Styling */
+.posts-container {
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Limit the container size */
+    max-height: 600px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow-y: auto; /* Vertical scrolling */
+    background: #fff; /* White background for content */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #aaa #f3f3f3;
+}
+
+/* Scrollbar Customization */
+.posts-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.posts-container::-webkit-scrollbar-thumb {
+    background-color: #aaa; /* Darker scrollbar thumb */
+    border-radius: 10px;
+}
+
+.posts-container::-webkit-scrollbar-track {
+    background: #f3f3f3; /* Light scrollbar track */
+}
+
+/* Post Card Styling */
+.post {
+    background: #f9f9f9; /* Light post background */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.post:hover {
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Profile Section */
+.profile-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile {
+    width: 50px;
+    height: 50px;
+    background-color: orange;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.profile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.username {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.option {
+    font-size: 18px;
+    color: #888;
+    cursor: pointer;
+}
+
+.option:hover {
+    color: #333;
+}
+
+/* Content Section */
+.content {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Image Section */
+.image-container {
+    width: 100%;
+    max-width: 450px;
+    height: 400px; /* Fixed height for uniformity */
+    overflow: hidden;
+    border-radius: 10px; /* Smooth corners */
+    margin: 10px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Image shadow */
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Post Footer */
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 12px;
+    color: #777;
+}
+
+.fa-heart {
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.fa-heart:hover {
+    color: #ff4d4d;
+}
+
+.liked {
+    color: #ff4d4d; /* Red heart for liked state */
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.detail {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Button Styling */
+button {
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #e64444;
+}

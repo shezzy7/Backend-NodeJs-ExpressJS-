@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST-CRUD-Project</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awnodeesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <h2>Instagram</h2>
+    <div class="posts-container">
+
+
+        <%for(post of posts) {%>
+            <div class="post">
+                <div class="profile-container">
+                    <div class="post-head">
+
+                        <div class="profile">
+                            <img src="<%=post.img%>" alt="profile">
+                        </div>
+                        <h2 class="username">
+                            <%=post.username%>
+                        </h2>
+                    </div>
+                    <div class="option">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                </div>
+                <p class="content">
+                    <%=post.content%>
+                </p>
+                <div class="image-container">
+
+                    <img src="<%=post.img%>" alt="Example Image" class="image" />
+                </div>
+                <div class="post-footer">
+                    <!-- like icon -->
+                    <div>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <!-- time -->
+                    <div>
+                        <p>
+                            <%=post.date.getHours()%>:<%=post.date.getMinutes()%>:<%=post.date.getSeconds()%>
+                        </p>
+                        <p>
+                            <%=post.date.getDate()%>/<%=post.date.getMonth()%>/<%=post.date.getYear()%100%>
+                        </p>
+                    </div>
+                </div>
+                <a href="/posts/<%=post.id%>/detail" class="detail">See in detail</a>
+                <a href="/posts/<%=post.id%>/update">Edit Post</a>
+                <br>
+                <form action="/posts/<%=post.id%>/?_method=delete" method="post">
+                    <button>Delete Post</button>
+                </form>
+            </div>
+            <%}%>
+    </div>
+    <a href="http://localhost:3000/posts/create">Create A Post</a>
+</body>
+<script>
+    {
+        let hearts = document.querySelectorAll(".fa-heart");
+        hearts.forEach(ele => {
+            ele.addEventListener("click", () => {
+                ele.classList.toggle("liked");
+            })
+        })
+    }
+</script>
+
+</html>

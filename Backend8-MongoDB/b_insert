@@ -1,0 +1,33 @@
+After creating and using a database the first thing that comes in mind is inserting some data in this database.
+For inserting data in our database we have different methods , these methods are available on web -> https://www.mongodb.com/docs/manual/crud/
+
+Two popular methods are following:
+    i-For inserting a single document
+        syntax-> db.collection.insertOne(document)
+        Above command replaces collection by collection name and document replaces by original value of document.
+        IF if write a collection name which is not present in our database then mongosh will create a collection with this given name in database which we are using.And in document we pass data as an object in key value paris.For example we are using a database college and we want to inset a document in collection student then we can do this as follows :- db.student.insertOne({name:"shahzad" , age : 10})
+        this command will add this data in student collection and also will insert a unique id with this entry which will be also considered as primary key of this document.The returnd response will be like as -> 
+        {
+            acknowledged: true,
+            insertedId: ObjectId(' someID's value ')
+        }
+
+        Our collection creates an array and all these documents are pushed in this array in the form of objects.
+
+        For seeing all the data of a collection we write command-> db.collection.find()
+        And another noteable thing in mongo is that we don't need to define our schema in our collections.We can insert any type of value and can write different key names for different documents.
+        For example if we insert this document in a collection student db.student.insertOne({name:"shahzad" , age : 10}).
+        Then we in the same collection we can insert {firstName:"hussan" , ciyt : "faisalabd"}
+        also can add as many pairs as many we want.
+    ii-For inserting a many documents in a collection
+        syntax-> db.collection.insertMany([{key1:val1,key2:val2..} , {key1:val1,key2:val2..}])
+        We wrap up all the documents separated by commas in an array and will insert them.
+        for example in our student collection we want to add the above data in single command then we can write->
+        db.student.insertMany([{name:"shahzad" , age : 10} ,{firstName:"hussan" , ciyt : "faisalabd"}] )
+        So through this method we can insert as many documents together as many we want.
+
+
+
+
+
+    

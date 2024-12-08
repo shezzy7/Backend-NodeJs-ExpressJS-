@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update this post</title>
+    <link rel="stylesheet" href="/update.css">
+</head>
+<body>
+    <h2>Make Changes in ypur post here!</h2>
+    <p><b>Note:</b> You can change your caption only</p>
+    <br>
+    <p>Username : <%=post.username%></p>
+    <form action="/posts/<%=post.id%>/?_method=patch" method="post">
+        <textarea name="content" cols="30" rows="30">
+            <%=post.content%>
+        </textarea>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

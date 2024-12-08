@@ -1,0 +1,97 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f3f3; /* Light gray background */
+    color: #333; /* Darker text for readability */
+}
+
+/* Form Container */
+form {
+    width: 100%;
+    max-width: 500px;
+    background: #fff; /* White background for form */
+    padding: 20px 30px;
+    border-radius: 10px; /* Smooth corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between form elements */
+}
+
+/* Form Labels */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555; /* Softer text color */
+}
+
+/* Input Fields */
+input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+    background: #f9f9f9; /* Light background for inputs */
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, textarea:focus {
+    outline: none;
+    border-color: #007bff; /* Blue border on focus */
+}
+
+/* Textarea Styling */
+textarea {
+    resize: vertical; /* Allow resizing only vertically */
+    min-height: 120px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Button Styling */
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: #007bff; /* Vibrant blue button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect */
+}
+
+button:active {
+    transform: translateY(0); /* Pressed state */
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 480px) {
+    form {
+        padding: 15px 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input[type="text"], textarea {
+        font-size: 13px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}

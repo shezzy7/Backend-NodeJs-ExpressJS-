@@ -1,0 +1,20 @@
+                            Databases
+Database :- It is a collection of data in such a formate that can be accessed easily.Basically it is like a storage where we can store a huge amount of data in such a formate that we can access,update,delete easily.
+Also data present in databases is more secure and has scalability(we can expend our database storage when required).
+
+Two types of databases are present now a days.One is relational databases(where data is present in the form of tables) like mySql  and second is non relational databases(Data is not present in tables) like mongoDB
+
+mySql :- mySql is relational database where data is present in the form of tables.For interacting with this data we use a language named as SQL(structure query language).This language helps us manipulating data present in our mySql database.
+
+DBMS :- Database management system is like a layer present over our database.It is just like a covering which contains operation,funtions written in sql.And its main purpose is to perform operations in a mannered way.
+
+For each entity we create a separate database.We cannot place data of a entity into another one.Each database can contain multiple tables in it.Tables in same database are connected to each other logically.
+
+So SQL is a programming language that helps in  interacting with relational databases like mqSql etc.
+
+In Relation databases data is in present in the form of tables.These tables organize data in the form of rows and columns.Each row in table contains entire info for an entity and each column contains info for all entities of a specific attribute(eg. name)
+Rows in SQL are called as tuples.
+Schema is the logical design of table.
+
+Install -> mySql database server and mySql workbench
+

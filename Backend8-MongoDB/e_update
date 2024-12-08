@@ -1,0 +1,10 @@
+We can also update key value pairs in our documents.We can update a single document on a specific conditions and also can update all the documents.
+If we want to update a document where we want to manipulate name key's value to "Goodo" where age is 19.Suntax -> db.collectionName.updateOne(<filter> , <update> ,<options>)
+Command-> db.collectionName.updateOne({age:19} , {$set : {name:"Goodo"}})
+so here first we will pass filter and will pass updating value
+
+We can also update many documents together by command -> db.colllectionName.updateMany(<filter> , <update> , <optios>)
+
+We can also replace a whole document not a specific key,value pair by using replace method
+Syntax-> db.connectionName.replaceOne(<filter> , <values>)
+note:it will not only replace specific key,value pairs it replace whole document by this given entry , but the id will remain same.
