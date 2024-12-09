@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 // then we write function provide on mongoose website.
 async function main(){
-    await mongoose.connect("mongodb://127.0.0.1:27017/test");//here in this method htpps is replaced by word mongodb and localhost is replaced by value 127.0.0.1 and 27017 is port number while test is name of the collection in the database,We can chnage collection name at any time we need(should b correct name of a collection)
+    await mongoose.connect("mongodb://127.0.0.1:27017/test");//here in this method htpps is replaced by word mongodb and localhost is replaced by value 127.0.0.1 and 27017 is port number while test is name of the database,We can change database name at any time we need(should be correct name of a database)
 
 }
 // main funtion will return a promise.
@@ -32,14 +32,14 @@ const User = mongoose.model("User" , collegeSchema);
 ///now this model is represntig a collection User of our database.
 //now for inserting some data in this model we have to create its instance/objects.As we know that this model is a class type so we can create objects of its type which will be also a document.
 //lets create document/object for inserting some data in our collection
-let user1 = new User({
-    name : "shahzad",
-    email : "shezzy@gmail.com",
-    age : 22
-});
+// let user1 = new User({
+//     name : "shahzad",
+//     email : "shezzy@gmail.com",
+//     age : 22
+// });
 //We will use same schema as we pass will creating our model.
 //now for inserting this document in our collection we use another method-> documentName/objectName.save();
-user1.save();
+// user1.save();
 //this save method after after saving given instance in collection it returns a promise.
 // let user2 = new User({
 //     name :"jawad",
@@ -81,18 +81,48 @@ user1.save();
 
 //let print all the data print in our user model
 
-User.find().then(res=>{console.log(res)});
+// User.find().then(res=>{console.log(res)});
 
 //we can also find data on specific condition.Lets we want to find data where age is equall to 22
 
-User.findOne({age:{$eq:22}}).then(res=>{console.log(res)});
+// User.findOne({age:{$eq:22}}).then(res=>{console.log(res)});
 // we also have method for finding one entry only
 //These methods return the data of all the documetns wrapped in in an array.So we can also fetch required data from array.
 
 
 //Another method findById  is used very much for finding data by using its id.Syntax-> Model.findById("id");
-User.findById("6756852b2e2eccc887a7e22a").then(res=>{
+// User.findById("6756852b2e2eccc887a7e22a").then(res=>{
+//     console.log(res);
+// })
+
+//we can all these method on mongoose documentation.
+
+
+//We can also update sepcific or all documents here using our update meethod.
+//Syntax for updating one documetn-> User.update(<filter>,<update>)
+//lets suppose we want to set age of user with name 'Goodo' to 19
+// User.updateOne({name:"goodo"} , {age:19}).then(res=>{
+//     console.log(res);
+// })
+
+//we can also update many documents by using updateMany method.
+//lets suppose we want to set age of all the users to 20 whose age is greater then 20
+// User.updateMany({age:{$gt:20}} , {age:20}).then(res=>{
+//     console.log(res);
+// })
+//when we print result here then it returns some metadata like {acknowledged: true,modifiedCount: 16,upsertedId: null,upsertedCount: 0, matchedCount: 16}
+//But we want this result should print our updated value.Then for this purpose we use another method 
+// User.findOneAndUpdate({age:12} , {age:15}).then(res=>{
+//     console.log(res);
+// })
+//This will print the whole document whichhit has updated but will print previous value mean value before updating.
+//If we want to print result value after updating then we use an option.Options are given in mongoose documentation.
+// User.findOneAndUpdate({name:"goodo"} , {age:15} , {new : true}).then(res=>{
+//     console.log(res);
+// })
+
+//we also updtae by id
+User.findByIdAndUpdate("67567d50f58775b014e28c44" , {name:"Goodo"} , {new : true}).then(res=>{
     console.log(res);
 })
 
-//we can all these method on mongoose documentation.
