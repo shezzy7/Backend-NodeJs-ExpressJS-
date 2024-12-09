@@ -1,0 +1,11 @@
+Mongoose :- Mongoose is a npm library/package that creates a connection between MongoDB and Node.js Javascript runtime environment.
+It is an ODM(Object Data Modeling) library.
+Mongoose is not only a single library for creating connection between MongoDb and node.js.
+
+Schema :- Schema defines the shape of documents within the collection.It is like cols in tables.Their names,dataType and constraint.
+we can read docs for creating schema here -> https://mongoosejs.com/docs/guide.html#definition
+
+Model:- In mongoose model is a class with which we can construct documents.
+
+syntax-> const User = mongoose.model("User",schemaName);
+Here User is the name of collection and by convention we write it sigular and in model method we also pass name of collection.But mongodb converts this singular name of mode to plural and to small letters.Meean this User will be converted to users.
