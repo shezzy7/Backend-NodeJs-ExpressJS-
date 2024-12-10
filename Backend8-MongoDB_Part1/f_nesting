@@ -1,0 +1,6 @@
+Here nesting means writing a document inside a document.
+We can also place a documetn isnide a document.Lets suppose a document where a key of this document contains another documetn as its value like perfomance key here in this document -: {name:"shezzy" , performance:{marks:1034 , medal:"Gold"}}
+So we can perform nesting like this in our collections.
+And if we want to access value of marks key in this performance key we write -> {"performance.marks":1034}
+we write it in a string.
+Lets suppose this document is present in our collection and we want to find this document through marks this row.Then we write -> db.collectionName.findOne({"performance.marks":1034})

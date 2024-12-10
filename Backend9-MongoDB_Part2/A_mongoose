@@ -9,3 +9,20 @@ Model:- In mongoose model is a class with which we can construct documents.
 
 syntax-> const User = mongoose.model("User",schemaName);
 Here User is the name of collection and by convention we write it sigular and in model method we also pass name of collection.But mongodb converts this singular name of mode to plural and to small letters.Meean this User will be converted to users.
+
+
+Schema Validations:-
+                    We can also implement constraints on our schema in mongo.for this purpose we write our schema as following
+                    const collectionSchema = new mongoose.Schema({
+                        attr1 : {
+                            type:String/number , 
+                            required:true
+                        },
+                        attr2 : {
+                            type : String/number , 
+
+                        } , 
+                        attr3 : {
+                            type : String/number
+                        }
+                    })

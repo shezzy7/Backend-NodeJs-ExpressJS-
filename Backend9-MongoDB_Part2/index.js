@@ -15,19 +15,19 @@ main().then(()=>{
 
 //first we need to create schema of our collection whose syntax can be seen from docs.
 //lets suppose we want to create collection with attributes name,email,age then first we need to define all of these alongside with their datatype as follows we can give any name to our schema.
-const collegeSchema = new mongoose.SchemaTypeOptions({
-    name:String,
-    email:String , 
-    age : Number
-})
+// const collegeSchema = new mongoose.Schema({
+//     name:String,
+//     email:String , 
+//     age : Number
+// })
 
 //now lets we want to create a collection college on which we want to apply above schema.
 //syntax-> const modelName = mongoose.model("collectionName" , schemaName);Genrally we give name to model same as the name of collection
-const College = mongoose.model("College" , collegeSchema);//model in mongoose is class with which we construct documents.
+//const College = mongoose.model("College" , collegeSchema);//model in mongoose is class with which we construct documents.
 //The collection which we pass here, mongoose creates a collection of this name in our database and sets given scehma on this collection.It also makes some chages in collection like it makes our given collection name to pluraland converts it to small letters foe example here College will be converted to colleges.
 
 //we can also apply same schema on many collections.
-const User = mongoose.model("User" , collegeSchema);
+// const User = mongoose.model("User" , collegeSchema);
 
 ///now this model is represntig a collection User of our database.
 //now for inserting some data in this model we have to create its instance/objects.As we know that this model is a class type so we can create objects of its type which will be also a document.
@@ -122,7 +122,83 @@ const User = mongoose.model("User" , collegeSchema);
 // })
 
 //we also updtae by id
-User.findByIdAndUpdate("67567d50f58775b014e28c44" , {name:"Goodo"} , {new : true}).then(res=>{
-    console.log(res);
-})
+// User.findByIdAndUpdate("67567d50f58775b014e28c44" , {name:"Goodo"} , {new : true}).then(res=>{
+//     console.log(res);
+// })
 
+
+
+//Delete
+//Model.deleteOne(<filter>)
+//For deleting purpose we use our deleteOne/deleteMany command.
+//Lets suppose we want to delete only one user where name is shahzad
+// User.deleteOne({name:"shahzad"}).then(res=>{
+//     console.log(res);
+// }) 
+//this method will find and delete only one user with attribute name : shahzad
+//we can also delete all the users where name is shahzad
+// User.deleteMany({name:"shahzad"}).then(res=>{
+//     console.log(res);
+// })
+
+//but both of above methods in result return an object like this : { acknowledged: true, deletedCount: 12 }
+//but if we want to get all the documents that we get in return , then we use follwoing methods
+// Model.findOneAndDelete(<filter>)
+// User.findOneAndDelete({name:"jawad"}).then(res=>{
+//     console.log(res);
+// })
+//here this method will find document where attribute name has value "jawad" , will delete it from database and then will store all the info about this document in the result 
+//we can also delete a documents on the basis of i
+// User.findByIdAndDelete("67567d50f58775b014e28c44").then(res=>{
+//     console.log(res);
+// })
+
+
+//We can write our sschema by applying some constraints on it.Now lets implement schema by adding constraints
+//Basicalyy the main method is little but diffrent from above one and is as following
+const amazonSchema = new mongoose.Schema({
+    name : {
+        type:String ,
+        required : true, //it is like not null in sql
+        maxLength : 20
+    } , 
+    price : {
+        type:Number , 
+        min:1 // value must be >=1
+
+    }  ,
+    rating:{
+        type : Number
+    }
+})
+let Amazon = mongoose.model("Amazone" , amazonSchema);
+// let pdct1 = new Amazon( { name:"Sweater" , price:2500 , rating:5  });
+
+// pdct1.save().then(res=>{
+//     console.log(res);
+// })
+//now if we want to add a document where name is abset then it will not be added in our collection.
+//let pdct2 = new Amazon({price:23 , rating:5});//this will give us an error bcz name is not given here while in schema we are requiring it.
+// pdct2.save().then(res=>{
+//     console.log(res);
+// }).then(err=>{
+//     console.log(err);
+// })
+//There is long documentation avaialable on schema contraints in mongo.
+
+// Updation
+//Contraints are applied on documents only during insertion not when updation.For example as have setted the price must be not less then 1.And when we will insert a new document in the collection then we will have to keep value of price above then 1 otherwise it will give us error.And after adding a valid value we update our this document and set it price to any value even a negative value then it will ve updated which means that our constraints are applied only during insertion.
+//This code will run successfully and will update price with 0.
+// Amazon.findByIdAndUpdate("6757ca9dbdb12aa490847e86" , {price:0}).then(res=>{
+//     console.log(res);
+// }).catch(err=>{
+//     console.log(err);
+// })
+
+//To solve this issue we have to set a property in our updating query which is runValidators.We have to use this as follows
+// Amazon.findByIdAndUpdate("6757ca9dbdb12aa490847e86" , {price:0} , {runValidators:true}).then(res=>{
+//     console.log(res);
+// }).catch(err=>{
+//     console.log(err);
+// })
+//this above code will give us error which will be that price must be >=1
