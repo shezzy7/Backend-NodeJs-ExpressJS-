@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Chats</title>
+    <link rel="stylesheet" href="/chats.css">
+</head>
+<body>
+    <h2>Mini Whatsapp</h2>
+    <%if(chats.legnth===0){%>
+        <h3>No data found in Chat Collection</h3>
+    <%} else{%>
+    <%for(let chat of chats){%>
+        <div class="chat">
+            <p>Sender : <%=chat.from%></p>
+            <div class="msg">
+                <p> <%=chat.msg%></p>
+                <form action="/chats/<%=chat._id%>/edit" method="get">
+                    <button>Edit</button>
+                </form>
+            </div>
+            <p>Received By :  <%=chat.to%></p>
+            <p class="time"><%=chat.created_At.toString().split(" ")[4]%></p>
+            
+        </div>
+    <%}%>
+    <%}%>
+    <form action="/chats/new" method="get">
+        <button>Add new </button>
+    </form>
+</body>
+</html>
