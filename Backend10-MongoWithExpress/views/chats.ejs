@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/chats.css">
 </head>
 <body>
-    <h2>Mini Whatsapp</h2>
+    <h2>Mini Messenger</h2>
     <%if(chats.legnth===0){%>
         <h3>No data found in Chat Collection</h3>
     <%} else{%>
@@ -16,9 +16,17 @@
             <p>Sender : <%=chat.from%></p>
             <div class="msg">
                 <p> <%=chat.msg%></p>
+                <form action="/chats/<%=chat._id%>/view">
+                    <button>Detail</button>
+                </form>
                 <form action="/chats/<%=chat._id%>/edit" method="get">
                     <button>Edit</button>
                 </form>
+               
+                <form action="/chats/<%=chat._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this?');">
+                    <button>Delete</button>
+                </form>
+                
             </div>
             <p>Received By :  <%=chat.to%></p>
             <p class="time"><%=chat.created_At.toString().split(" ")[4]%></p>

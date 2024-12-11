@@ -5,7 +5,7 @@
     npm i mongoose
     npm i path
     npm i ejs
-
+    npm i method-override
 */
 
 // Here we creating model for whatsaap which will have functioanlities of (_id , from , to , message , created_At)
@@ -15,6 +15,8 @@ let app = express();
 let mongoose = require("mongoose");
 let path = require("path");
 let Chat = require("./models/chat.js");
+let methodOverride = require("method-override");
+app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname,("public"))));
@@ -92,11 +94,31 @@ app.get("/chats/:id/edit" , async (req,res)=>{
     let chat = await Chat.findById(id);
     res.render("edit.ejs" , {chat});
 })
+
 //update
-app.post("/chats/:id" , async (req,res)=>{
+app.put("/chats/:id" , async (req,res)=>{
     let {id} = req.params;
-    let {msg} = req.body;
-    await Chat.findByIdAndUpdate(id , {msg:msg});
+    let {newMsg} = req.body;
+    await Chat.findByIdAndUpdate(id , {msg:newMsg});
     res.redirect("/chats");
 
 } )
+// delete
+app.delete("/chats/:id" , async (req,res)=>{
+    
+    let {id} = req.params;
+    console.log(id);
+    await Chat.findByIdAndDelete(id).then(res=>{
+        console.log(res);
+    });
+    res.redirect("/chats");
+})
+
+//see in detail
+app.get("/chats/:id/view" ,async (req,res)=>{
+    let {id} = req.params;
+     let chat = await Chat.findById(id);
+    res.render("view.ejs" , {chat}); 
+})
+
+

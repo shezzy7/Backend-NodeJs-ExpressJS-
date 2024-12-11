@@ -9,8 +9,8 @@
 <body>
     <h4>Editing Post wiht id : <b> <%=chat.id%> </b></h4>
     <p>Sender : <%=chat.from%> , Receiver : <%=chat.to%>  </p>
-    <form action="/chats/<%=chat.id%>" method="post">
-        <textarea name="msg" cols="30" rows="15">
+    <form action="/chats/<%=chat.id%>?_method=PUT" method="post">
+        <textarea name="newMsg" cols="30" rows="15">
             <%=chat.msg%> 
         </textarea>
         <button>Update</button>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <link rel="stylesheet" href="/view.css">
+</head>
+<body>
+
+    <div class="container">
+        <h3 class="send">Sender :<b> <%=chat.from%> </b></h3>
+        <h3 class="rec">Receiver :<b> <%=chat.to%> </b></h3>
+        <p class="msg">Message :<b> <%=chat.msg%> </b></p>
+        <p class="id">Message ID :<b> <%=chat._id%> </b></p>
+        <p class="time">Sending Time :<b> <%=chat.created_At.toString().split(" ")[4]%> </b></p>
+        <p class="date">Sending Date :<b> <%=chat.created_At.toString().split(" ").slice(0,4)%> </b></p>
+        <form action="/chats" method="get">
+            <button>Go Back</button>
+        </form>
+    </div>
+    
+</body>
+</html>
