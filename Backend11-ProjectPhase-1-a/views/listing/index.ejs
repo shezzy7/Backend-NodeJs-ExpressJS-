@@ -6,11 +6,14 @@
     <title>All listings</title>
 </head>
 <body>
-    <h2>All litings</h2>
+    <h2>All Listings</h2>
+    <form action="/listings/new">
+        <button>Add new</button>
+    </form>
     <ul>
         <%for(let list of listing){%>
             <li>
-            <p><%=list.title%></p>
+            <p><a href="/listings/<%=list._id%>"><%=list.title%></a> </p>
             </li>
         <%}%>
     </ul>
