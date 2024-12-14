@@ -14,7 +14,7 @@ main().then(()=>{
 
 const init = async ()=>{
 
-    // await Listing.deleteMany({});
+    await Listing.deleteMany({});
     await Listing.insertMany(initData.data);
     console.log("Data inserted successfully");
 
