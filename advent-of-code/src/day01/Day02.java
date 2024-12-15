@@ -4,8 +4,8 @@ import java.util.*;
 public class Day02 {
     public static void main(String[] args) {
         // Input file path
-        String inputFilePath = "input.txt";
-        String inputFilePath2 = "input2.txt";
+        String inputFilePath = "input2.txt";
+        // String inputFilePath2 = "input2.txt";
         // List to store pairs of numbers
         List<int[]> numberPairs = new ArrayList<>();
 

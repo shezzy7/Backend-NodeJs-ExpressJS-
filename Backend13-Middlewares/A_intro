@@ -1,0 +1,13 @@
+Middleware is an intermediatory between client and server.
+Middleware in express are functions that come into play after the server receives the request and before the response is sent to the client.
+Common Middleware functions are:
+    methodOverride
+    bodyParser
+    express.static
+    express.urlencoded
+
+
+We can also define our own middlewares.
+Middlewares can access our request body and response object.
+Chaining is possible in middlewares.A middleware funtion can pass contron to other middleware function and so on..
+A Middleware can also break this chaining by sending a response.

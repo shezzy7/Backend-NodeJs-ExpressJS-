@@ -133,16 +133,7 @@ body {
     color: #777;
 }
 
-.fa-heart {
-    font-size: 24px;
-    color: #aaa;
-    cursor: pointer;
-    transition: color 0.3s;
-}
 
-.fa-heart:hover {
-    color: #ff4d4d;
-}
 
 .liked {
     color: #ff4d4d; /* Red heart for liked state */

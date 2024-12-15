@@ -26,7 +26,7 @@ const connection = mysql.createConnection(
 
 
 app.listen(8080, () => {
-    console.log("App is listening on port number ", 3000);
+    console.log("App is listening on port number ", 8080);
 })
 
 //Get count of all the users in table
