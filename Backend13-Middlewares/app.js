@@ -5,7 +5,7 @@ app.listen(3000,()=>{
 })
 
 
-app.use((req,res,next)=>{
+app.use("/",(req,res,next)=>{
     console.log("Hi , i'm 1st middleware");
     console.log("Request method : ",req.method);
     console.log("Request path : " , req.path);

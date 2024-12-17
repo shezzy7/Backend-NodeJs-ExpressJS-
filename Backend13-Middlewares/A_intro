@@ -9,7 +9,7 @@ Common Middleware functions are:
 
 We can also define our own middlewares.
 Middlewares can access our request body and response object.
-Chaining is possible in middlewares.A middleware funtion can pass contron to other middleware function and so on..
+Chaining is possible in middlewares.A middleware funtion can pass control to other middleware function using next function and so on..
 A Middleware can also break this chaining by sending a response.
 
 Logger:- We use middleware for logging.Logging mean printing some thing on console.Here with the help of  middlewares we can print our request type/hostname/path etc for each request.
@@ -17,12 +17,12 @@ Basically in most of the cases we use middlewares for getting some info about ou
 
 If we want to get type of request for each time we can define it in a middleware and then whenever any request goes to any api then this middleware will print the request.
 
-We write our middlewares at first mean before apis.Else our requeste's path matches the request and no more executing occurs further once our path matches , so this is the reason why we use middleware at front of apis.
+We write our middlewares at first mean before apis.Else if our request's path matches the path define in api and then no more execution occurs further once our path matches , so this is the reason why we use middleware at front of apis.
 
 
 We can also set our middlewares path specified.Mean if we want that our utitlity middleware should execute for a specific path only.For this purpose we define path in its parameters like this-> app.use("path" , (req,res,next)=>{//body})
 When write no path with a middleware then it executes for each path.
 
-We can also write our middleware at last of the apis.We use this for sending a response we user enters an incorrect path.And while writing this we don't need to pass any path in middlewares params.
+We can also write our middleware at last of the apis.We use this for sending a response when user enters an incorrect path mean as an error we can define which response we have to send.And while writing this we don't need to pass any path in middlewares params.
 
 Middlewares are majorly used as authentication layer.For example as in the activity.js file we have setted a middleware which first checks if the given api token is correct then then send the correct response else send an error message and stop execution.
