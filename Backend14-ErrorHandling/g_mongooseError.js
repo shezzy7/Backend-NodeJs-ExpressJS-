@@ -44,10 +44,30 @@ app.get("/chat/:id" ,asyncWrap(async (req,res,next)=>{
 //error-handling middleware
 app.use((err,req,res,next)=>{
     let {status=404,message="some general error occured"} = err;
+
+    //each error is due to a valid reason we know.And in express each error has its own specific name.These names are given on the base of cause of this error.
+    //we can see each error's name and all the detatils of this error by printing it on screens.
+    console.log(err.name);//each error has name property
+    // console.dir(err);//it will print all detail of error
+    //we use these properties when we want to send specific response on specific error type.
+    //lets suppose we want to call a function when we get a castError in our code.
+    if(err.name==="CastError"){
+        err = handleError(err);
+    }
+    next(err);
+})
+app.use((err,req,res,next)=>{
+    let {status=401 , message="some general occured"} = err;
     res.status(status).send(message);
 })
+
+function handleError(err){
+    console.log("This is a cast error");
+    return err;
+}
 function asyncWrap(fn){
     return function(req,res,next){
         fn(req,res,next).catch((err)=>next(err));
     }
 }
+
