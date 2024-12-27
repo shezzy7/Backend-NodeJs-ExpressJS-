@@ -13,6 +13,9 @@ app.listen(8080,()=>{
 async function main(){
     await mongoose.connect("mongodb://127.0.0.1:27017/relations")
 }
+main().then(res=>{
+    console.log("Database connected a successfully")
+});
 let {Schema} = mongoose;
 let person_schema = new Schema({
     username : String,
@@ -27,32 +30,42 @@ let posts_schema = new Schema({
     }
 })
 
-let Post = mongoose.model("Post" , posts_schema);
 const Person =  mongoose.model("Person" , person_schema);
+let Post = mongoose.model("Post" , posts_schema);
 const addPost = async()=>{
-    await Person.insertMany([{
-        username : "shezzy",
-        email :"shezzy@gmail.com"
-    },{
-        username : "malang",
-        email:"malang@gmail.com"
-    }])
-}
-addPost();
-// let addPersons =async ()=>{
-//     let person1 = new Person({
-//         username :"Hania",
-//         email : "hania@gmail.com"
-//     })
+    // await Person.deleteMany({});
+    // await Post.deleteMany({});
+    // let person1 = new Person({
+    //     username : "shezzy",
+    //     email : "shezzy@gmail.com"
+    // })
+    // let post1 = new Post({
+    //     content : "Hello world!",
+    //     likes : 25,
 
-//     let post1 = new Post({
-//         content :"Hello world",
-//         likes : 25,
-//     })
-//     post1.user = person1;
-//     await person1.save().then(res=>{console.log("Person1's data saved")})
-//     await post1.save().then(res=>{console.log("Post1's data saved")});
-// }
-// addPersons();
+    // })
+
+    // post1.user = person1;
+    // await person1.save();
+    // await post1.save();
+
+
+    // now lets add second post in first person after successfull adding person1 and post1 by person1
+    let person1 = await Person.findOne({username:"shezzy"});
+    let post2 = new Post({
+        content : "Bye Bye",
+        likes : 15
+    })
+    post2.user = person1;
+    await post2.save();
+}
+// addPost();
+
+//Now if we print data in our collection posts then we will find two documents where each document will contain same user id as same person have posted both of those posts.
+//So we use this method when we handle a large amount of data connected to a single datapoint.We share id of that one datapoint inside each document associated to that datapoint.
+
+
+// We should also read the documentation in details given on mongoDb about these relationships between collections.And also follow the six rules of thumb for mongoDb schema given there while handling and managing a large amount of data.
+//Link -> https://mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design
 
 
