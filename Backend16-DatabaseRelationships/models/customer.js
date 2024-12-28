@@ -27,6 +27,7 @@ let order_Schema = new Schema({
 const Order = mongoose.model("Order", order_Schema);
 
 let addOrders =async () => {
+    await Order.deleteMany({})
     await Order.insertMany([
         {
             item: "Cake",
@@ -42,6 +43,7 @@ let addOrders =async () => {
 
 
 let customer_Schema = new Schema({
+    
     name: String,
     orders: [//in this we are going to store objectId of each order placed by this cutomer.
         {
@@ -53,6 +55,7 @@ let customer_Schema = new Schema({
 })
 const Customer = mongoose.model("Customer" , customer_Schema);
 let addCustomer =async ()=>{
+    await Customer.deleteMany({})
     let order1 = await Order.findOne({item:"Cake"});
     let order2 = await Order.findOne({item:"Barfi"});
     let cusotmer1 = new Customer({
