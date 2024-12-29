@@ -67,5 +67,3 @@ const addPost = async()=>{
 
 // We should also read the documentation in details given on mongoDb about these relationships between collections.And also follow the six rules of thumb for mongoDb schema given there while handling and managing a large amount of data.
 //Link -> https://mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design
-
-
