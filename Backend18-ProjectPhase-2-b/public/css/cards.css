@@ -36,10 +36,7 @@ body{
     background-color: white;
 }
 
-.btn{
-    /* background-color: #fa424d; */
-    border: none;
-}
+
 
 .show-img{
     height: 40vh;
@@ -51,4 +48,8 @@ body{
 .btns{
     display: flex;
 
+}
+
+label{
+    font-weight: 540; 
 }

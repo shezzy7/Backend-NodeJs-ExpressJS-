@@ -2,15 +2,15 @@
 
     <body>
         <!-- As we have setted values of many attributes to be requird in our model schema so we also have to set them required in our frontend side for reducing errors.For this purpose we can use html's given required attribute which will ask to enter empty field where we will add this.But this required attribute works differently on different browsers but we want to set a fixed behaviour of our site.So for this purpose we will use bootstrap form handling methods.For this purpose we have to add a class in our form tag like here is "needs-validation" and also novalidate word.To implemant this logic bootstrap also provide us a js code to which we pastes in public/js/script.js file and will add this file path in a script tag here in this code.  -->
-        <div class="row mt-3">
+        <div class="row mt-3 mb-3">
             <div class="col-8 offset-2">
                 <h2>Add info</h2>
-                <form action="/listings" novalidate class="needs-validation" method="POST">
+                <form action="/listings/add" novalidate class="needs-validation" method="POST">
 
                     <div class="mb-3">
                         <label for="title" class="form-label">Title </label>
                         <input type="text" placeholder="Enter a Catchy Title" name="listing[title]"
-                            class="form-control">
+                            class="form-control" required>
                         <!-- bootsrap also provides us class with the help of which of we can show some message if user enter a valid data and alos can show a message when user enter in invalid data or doesn't enter any data in a require fiels.We do this the help of following classes. -->
                         <div class="valid-feedback">
                             Title looks good!
@@ -60,9 +60,9 @@
 
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Location </label>
+                        <label for="location" class="form-label">Location </label>
 
-                        <input type="text" placeholder="Enter Location" name="listing[location]" class="form-control"
+                        <input type="text" placeholder="Enter Location" name="listing[location]" class="form-control needs-validation"
                             required>
 
                         <div class="invalid-feedback">
@@ -70,9 +70,10 @@
                         </div>
                     </div>
 
-                    <button class="btn add-btn mt-3">Submit</button>
+                    <button class="btn btn-outline-success mt-3">Submit</button>
                 </form>
             </div>
         </div>
+        <script src="/js/script.js"></script>
         
     </body>

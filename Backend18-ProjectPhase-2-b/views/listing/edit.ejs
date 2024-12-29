@@ -2,15 +2,10 @@
 
     <body>
 
-        <div class="row mt-3">
+        <div class="row mt-3 mb-3">
             <div class="col-8 offset-2">
                 <h2>Edit your Listing</h2>
                 <form action="/listings/<%=list._id%>?_method=PUT" novalidate class="needs-validation" method="POST">
-
-
-
-
-
 
                     <div class="mb-3">
                         <label for="title" class="form-label">Title </label>
@@ -67,7 +62,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-dark">Update</button>
+                    <button class="btn btn-outline-success">Update</button>
                 </form>
             </div>
         </div>
