@@ -1,0 +1,50 @@
+Web Cookies :-
+    HTTP cookies(web cookies) are small blocks of data created by a web server while a user is browsing a website and placed on the user's computer or other device by the user's web  browser.
+    Basically our web sever sends some data to our web browser which help us in using our website smoothly as they usually are written  to provide us some essential data for smoothing our expereince with website.
+    On many website if we inspect and go to application's section then there will be cookie section in which cookies are defined.
+    Data in cookies us fiven in the form of key value pairs.
+
+    We can also send our own cookies by using a response method cookie
+    For example if we want to sent a cookie on a route "/getCookie" then we will do this as follows
+    app.get("/getCookie",(req,res)=>{
+        res.cookie("name","Shahzad");
+        res.send("Get cookies route");
+    })
+
+    These cookies will be availabe to all routes whenever we want we can access them 
+When we want to access cookies through our api then first we need to parse them using a middleware named cookie-parsor
+Cookie-parsor is an npm package and first we need to install it from npm and requir it as below and also set it as a middleware
+
+let supppose we created a server and in an api we send some data as cookie and them in another api we want to get our cookies and send them as a response then we willl this as follows
+
+//install cookie-parsor through npm first-> npm i cookie-parsor
+let express = require("express");
+let app = express();
+
+let cookieParsor = require("cookie-parsor");
+app.use(cookieParsor())
+app.listen(3000,()=>{
+    console.log("App listening on port number : 3000");
+})
+app.get("/sendCookies",(req,res)=>{
+    res.cookie("name","shahzad");
+    res.send("Cookie sended");
+})
+app.get("getCookie",(req,res)=>{
+    let {name} = req.cookies;
+    res.send(`Hi , ${name}`);
+})
+
+
+//as we know that users can access our cookies through inspect and by going to application section and they can also modify them.But we can also make our cookies private by using signed in property of cookie.For this perpose we send some code inside cookieParsor while setting it in our middleware and also while sending a cookie we pass an extra argument alongside key,value pair which is signed:true
+//And while accessing signed cookies we access them by using a method instead of req.body we use req.signedCookies
+
+app.use(cookieParsor("secretcode"));
+app.get("/getSignedookie",(req,res)=>{
+    res.cookie("name","shahzad",{signed:true});
+    res.send("Signed Cookies send");
+})
+
+app.get("/verify",(req,res)=>{
+    res.send(req.signedCookies);//it will get all the cookies from server and if any signed cookie with whome singed:true was added is changed then we will get an empty object for it.Otherwise correct value will be given. 
+})
