@@ -1,0 +1,22 @@
+<!-- we will be showing alert only if there is some message in our success variable and this success in itself is an array and we will be printing it only when we have some values in this array -->
+ <%if(success && success.length){%>
+    <div class="alert alert-success alert-dismissible show col-6 offset-3" role="alert">
+        <%=success%>
+        <button class="btn-close"
+                type="button"
+                aria-label="close"
+                data-bs-dismiss="alert"
+        ></button>
+    </div>
+<%}%>
+<!-- for error message -->
+ <%if(error && error.length){%>
+    <div class="alert alert-danger alert-dismissible show col-6 offset-3" role="alert">
+        <%=error%>
+        <button class="btn-close"
+                type="button"
+                aria-label="close"
+                data-bs-dismiss="alert"
+        ></button>
+    </div>
+<%}%>
