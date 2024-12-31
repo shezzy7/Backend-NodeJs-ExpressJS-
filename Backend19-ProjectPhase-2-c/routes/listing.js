@@ -21,8 +21,8 @@ const validateListing = (req,res,next)=>{
 
 //see all
 router.get("/" ,wrapAsync(async  (req,res)=>{
+
     const listing = await Listing.find({});
-    
     res.render("./listing/index.ejs",{listing});
 }))
 //add one
@@ -41,6 +41,7 @@ router.post("/add" ,validateListing , wrapAsync( async (req,res,next)=>{
     let list = new Listing(req.body.listing);//fetching data from request body.As we have named each input section as a key of an object named lisitng.
     
     await list.save();
+    req.flash("success","New Listing added successfully!");
     res.redirect("/listings");
     
 }))
@@ -48,6 +49,11 @@ router.post("/add" ,validateListing , wrapAsync( async (req,res,next)=>{
 router.get("/:id" ,wrapAsync(async (req,res)=>{
     let {id} = req.params;
     let list = await Listing.findById(id).populate("reviews");
+    if(!list){
+        req.flash("error","Listing you are asking for does not exists!")
+
+        res.redirect("/listings");
+    }
     res.render("./listing/show.ejs" , {list});
 }));
 
@@ -55,13 +61,20 @@ router.get("/:id" ,wrapAsync(async (req,res)=>{
 router.get("/:id/edit" ,wrapAsync( async (req,res)=>{
     let {id} = req.params;
     let list = await Listing.findById(id);
+    if(!list){
+        req.flash("error","Listing you are asking for does not exists!")
+
+        res.redirect("/listings");
+    }
     res.render("./listing/edit.ejs",{list});
 }))
 router.put("/:id" ,validateListing,wrapAsync(async  (req,res)=>{
     
     let {id} = req.params; 
     await Listing.findByIdAndUpdate(id , {...req.body.listing});
-    res.redirect("/listings");
+    req.flash("success","Listing Updated!");
+    
+    res.redirect(`/listings/${id}`);
 }))
 //delete
 router.delete("/:id" , wrapAsync(async (req,res)=>{
@@ -71,6 +84,8 @@ router.delete("/:id" , wrapAsync(async (req,res)=>{
     // let result = await Listing.findById(id);
     // await Review.deleteMany({_id:{$in:res.orders}})
     await Listing.findByIdAndDelete(id);
+    req.flash("success","Listing Deleted Successfully!");
+
     res.redirect("/listings");
 }))
 

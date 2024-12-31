@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 
 const cookieParser = require("cookie-parser");
-app.use(cookieParser());
+const { trusted } = require("mongoose");
+// app.use(cookieParser());
+// we need to send a secret inside our cookie parser for sending signed cookies
+app.use(cookieParser("secretcode"))
 
 
 app.listen(3000,()=>{
@@ -18,9 +21,14 @@ app.get("/send",(req,res)=>{
 
 app.get("/getCookie",(req,res)=>{
     //we can destructure our cookies through req.cookies and for this purpose we must install and require cookie-parsor through npm and then use that required cookie parsor as a middleware like -> app.use(cookieParsor())
-    let {name = "anynomous" } = req.cookies;//we can also by default values
-    res.send(name);
+    let {name = "anynomous"  } = req.cookies;//we can also by default values
+    let { salary } = req.signedCookies;//for destructruring signed cookies we use req.signedCookies
+    res.send(`My name is ${name} and i get salary ${salary}`);
 })
 
 
-//we can also send signed cookies which means if anyone changed 
+//we can also send signed cookies which means if anyone change them on browser then he can't access original values of cookies as we have setted them private like in below we have sended a cookie and sended it as a signed cookie and if we change it in our browser later then its value will changed to empty or false.
+app.get("/sendsignedcookie",(req,res)=>{
+    res.cookie("salary" , 2500 ,{signed:true} );
+    res.send("Signed cookie sended")
+})
