@@ -1,0 +1,6 @@
+Salting :-
+    Password salting is a technique to protect passwords stored in databases by adding a string of 32 or more characters and then hashing them.
+    For example if a user enters some password while sign-up, then our server will first add an extra string in it and then converts this resulted value in hashed form and stores this hashed value in our database.This helps us in making our data more secured.
+
+    Many tools are available in the markete that help us in hashing and salting and also help in authentication.So we donot need to build authentication/Authorization system from scratch.Also these things cannot be builded easily and they are builded after too many researches.
+    A well known,well builded and very good tool exists which is known as 'passport' and with its help we can implement our sign-in/sign-up functionality in nodeJs. 

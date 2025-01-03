@@ -1,0 +1,8 @@
+Session : When our client interacts with server for one time then we call this one interaction a session
+Protocol : These are rules under which our request and response work.
+State : State refers to the information that represents the status of a session or interaction at a specific point in time.For example if we go on an e-commerce website and there we add some items into cart.Then our server will store these items info in our website's cart section.This info will not be stored in our database because these items are unpaid which mean user can buy or not.So this info about staus of payment and  all the items stored temporary in our website lies under the concept of state.
+
+Type of protocolo:-
+        One the basis of state we have to types of protocols.One is statefull protocols and other is stateless protocol.
+        i- Statefull Protocol : Statefull Protocols require server to save the status and session info(when req come , when response was send etc). eg : ftp
+        ii- Stateless Protocol : Stateless Protocol does not require the server to retain the session info. eg : http

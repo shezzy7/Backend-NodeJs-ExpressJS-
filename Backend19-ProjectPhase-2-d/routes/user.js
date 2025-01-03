@@ -12,7 +12,7 @@ router.post("/signup", wrapAsync(async (req, res) => {
         let { username, email, password } = req.body;
         let newUser = new User({ email, username });
         console.log(newUser)
-        await User.register(newUser, password);
+        await User.register(newUser, password);//register method is used to store info of user who is registering.This method takes some paramas one of them is object containing info like username,email etc and other is password.A third param is optional.
         req.flash("success", "Welcome to wanderlust!")
         res.redirect("/listings");
     } catch (e) {
