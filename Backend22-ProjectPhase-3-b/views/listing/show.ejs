@@ -1,6 +1,8 @@
 <% layout("/layout/boilerplate.ejs") %>
     <script>
         const mapToken = "<%=process.env.MAP_TOKEN%>";
+        // as the data of geometry is in the form of geojson so we will convert it to json first and store it in a variable for making it accessible to map.js file.
+        const listing= <%-JSON.stringify(list)%>
     </script>
 
     <body>
@@ -127,6 +129,9 @@
                                 </div>
                                 <hr>
                                 <%}%>
+
+                                <!-- adding a map for location entered by the user,we can see all the details how to implement a map in our webpage on docs.mapbox.com at this page we are given many libraries and we will be using 'Mapbox GL JS' library.we will go this library's documentation and there go to example section infact this url -> https://docs.mapbox.com/mapbox-gl-js/example  there we will be going to 'Display a map on a webpage' there we will be copying link tag and script tag given in head tag and adding them in our code.Then we will create a div where we want to add a map in website and we will give this id named 'map' and then go to our static css file and give some width and height to this div.
+                                Then after this we will be given some code in script tag inside body tag.We will copy this code given in script tag and copy this code and link this code to this file we can also add it here in script tag but here in our project we are placing this code in public/js/map.js file and we will connect this js file to this ejs file.-->
                                 <div class="col-8 offset-3 mb-3">
                                     <h3>Where you'll be</h3>
                                     <div id="map">

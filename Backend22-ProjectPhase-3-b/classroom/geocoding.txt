@@ -1,0 +1,13 @@
+Geocoding:- Geocoding is the process of converting addresses (like a street address) into geographic coordinates(like longitude and lattitude),which we can use to place markers on a map or positon the map.
+Here in our code we are this concept bcz in our map we want that what address our user store for a listing then our code must convert it to longitude,lattitude and we will be using this info in map file for showing that location on top on map.As our our mapbox require address  in the form of lattitude and longitude so we will have to first convert it to longitude,lattitude.We can write code for this thing from scratch but many api are present for converting adresses into longitude,lattitude and we will be mapbox apis for this purpose.
+If we go to link below
+link -> docs.mapbox.com/api/search/geocoding 
+Then we will se there two types of geocoding and we will be using forwarding geocoding.If we go below on that page then an api key will be provided for using forward geocoding.
+
+But here in our code we are using sdk.
+link -> github.com/mapbox/mapbox-sdk-js/blob/main/docs/services.md
+There in preview section we will find geocodingV6  link we have to go to this link.There we will find forward geocoding.
+
+First we have to install sdk by using command -> npm install @mapbox/mapbox-sdk
+
+Then from github.com/mapbox/mapbox-sdk-js  we copy require links that we have used in controllers/listing.js file.

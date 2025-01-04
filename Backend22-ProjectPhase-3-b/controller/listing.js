@@ -1,5 +1,7 @@
 const Listing = require("../models/listing.js");
-
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+const mapToken = process.env.MAP_TOKEN;
+const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 //index
 module.exports.index = async (req, res) => {
     const listing = await Listing.find({});
@@ -19,13 +21,25 @@ module.exports.createListing = async (req, res, next) => {
     // if(!req.body.listing){ //Now we don't need this as our joi is working such type of functionality for us.
     //     throw new ExpressError(400,"Please enter valid data")
     // }
+    // below code for gecoding is copied from documentation
+
+    let coordinates1 = await geocodingClient.forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1 //limit is the number of how many possible coordinates we want.
+      })
+        .send()
+        // our varibale coordinates will give us a whole object body inside this object there's another object features(which is an array of size 1) inside which there is an object named geometry which contains an of size of 2 which contains our given locations  
+        
+    
     let list = new Listing(req.body.listing);//fetching data from request body.As we have named each input section as a key of an object named lisitng.
     list.owner = req.user;
     // we also have to save info of image 
     let url= req.file.path;
     let filename = req.file.filename;
     list.image = {url,filename}
+    list.geometry = coordinates1.body.features[0].geometry;
     await list.save();
+    console.log(list);
     req.flash("success", "New Listing added successfully!");
     res.redirect("/listings");
 
