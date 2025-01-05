@@ -1,0 +1,8 @@
+Storing Passwords:-
+    In our database we never store our Passwords as it is.We store their hashed form.Hashed form means we send our password's value  or any sensitive that we want to protect from any leakeage we send this data to a hashing function which converts the given value to different one.But it generates the output on a defined patteren(if we pass any value then it will give us its hashed form.If we pass the same value again then our hashing function will generate the same hashed value.) and then we store that given output from hashing function in our database.Later if any user login to his account and he enters his password then first this entered password goes to hashing function which converts it to its hashed form and on the basis of this hashed form we search for this password in our database.
+    While hashing following properties are followed by a hashing function:-
+        => For every input there is a fixed output
+        => They are one way functions, we can't get input from output  
+        => For a different input there is a different output , but same length
+        =>  Small changes in input bring large changes in output.
+    

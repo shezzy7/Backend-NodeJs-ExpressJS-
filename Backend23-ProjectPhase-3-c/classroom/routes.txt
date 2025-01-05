@@ -1,0 +1,9 @@
+Express Router:-
+    Express routers are a way to organize your Express application such that our primary app.js file does not become bloated,
+    If in our app.js file if we create more routes then our code will be become bulky and will be difficult to understand and later if we want to make changes in our code or to understand what we have written in our code then it will be very difficult for us to understand it.
+    So express routers help us in organizing our code in a well strutured formate but they didn't provide any functionality to our code.
+We implement Router's concept in our code through express.As in express object a function named Router is present and we use it 
+
+We can also go to express documentation to see detail of router and also how to implement it.
+
+const router = express.Router();
