@@ -1,0 +1,13 @@
+MVC (Model-View-Controller) is a design pattern used to organize code in software applications. It separates the application into three interconnected components:
+
+Model: Manages the data, logic, and rules of the application. It interacts with the database and handles business logic.
+
+View: Displays the data to the user. It is the user interface, like web pages or application screens.
+
+Controller: Handles user input and updates the Model or View accordingly. It acts as a bridge between the Model and the View.
+
+This separation makes the code easier to manage, test, and scale.
+
+Bacically MVC is the name of a pattere with the help of which developers organize/structure their code.For example as here we have placed all the files that we are rendering to user are placed in views directory and all the code related to databases is placed in midels directory.
+Now as we know that c stands for controller which is basically a directory in which we'll store all the logic related to  backend.
+So here in controller directory  we will place all the callbacks we have passed to apis.As we know that our routes directory should be only managing routes and all the functionality must be in a controller dir.And we will be exporting them here and using as a callback.

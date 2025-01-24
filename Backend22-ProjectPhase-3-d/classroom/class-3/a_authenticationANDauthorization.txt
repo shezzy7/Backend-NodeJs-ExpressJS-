@@ -1,0 +1,6 @@
+Authentication:-
+    Authentication is the process of verifying who someone is.For example is go on facebook then facebook asks to login first.It is the process of authentication where facebook is looking that who is coming to facebook and then it open his/her account after authentication.
+Authorization:-
+    Authorization is the process of verifying what specific applications,files, and data a user has access to.For example if go to facebook then after authentication facebook authorizes that what type of operation we can do there.For example we can edit our posts/comments only, we can delete our posts only etc.And these things lie under our Authorization process.
+
+
