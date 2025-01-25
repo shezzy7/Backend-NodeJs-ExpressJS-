@@ -65,15 +65,12 @@ module.exports.showListing = async (req, res) => {
 //delete listing
 module.exports.destroyListing = async (req, res) => {
     let { id } = req.params;
-
-
     // let result = await Listing.findById(id);
     // await Review.deleteMany({_id:{$in:res.orders}})
     await Listing.findByIdAndDelete(id);
     req.flash("success", "Listing Deleted Successfully!");
-
     res.redirect("/listings");
-}
+}           
 
 //render Edit form
 module.exports.renderEditForm=async (req, res) => {
@@ -110,13 +107,14 @@ module.exports.updateListing=async (req, res) => {
 
 // search country
 module.exports.searchCountry = async(req,res)=>{
-    let {country} = req.params;
+    let {search:country} = req.query;
     console.log(country);
-    console.log("Country")
-    let listing = await Listing.find({country:this.country});
+    
+    let listing = await Listing.find({country});
+    console.log(listing)
     if(!(listing && listing.length)){
-        req.flash("error","Sorry,We found no place in this country!")
+        req.flash("error",`Sorry,We found no place in ${country}!`)
         return res.redirect("/listings");
     }
-    res.render("./listings/index.js",{listing});
+    res.render("./listing/index.ejs",{listing});
 }

@@ -4,7 +4,7 @@
 if(process.env.NODE_ENV!="production"){ //later we will be creating a variable in which we will be storing our level that whether we are working on production level or development level.And we will be using our env file only whene we will be in development level.
     require("dotenv").config()
 }
-console.log(process.env.CLOUD_NAME);
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -84,9 +84,11 @@ app.use("/listings" , listingsRouter);
 app.use("/" , usersRouter);
 app.use("/listings/:id/review" , reviewsRouter);//Variables values does not pass to child paths like :id value here will not be going to review.js file and will be accessible to app.js only.For making it accessible to chile paths we go to file of child paths like review here and there while calling router through express we pass an option in it which is {mergeParams:true} 
 //a route handling invalid routes
+
 app.all("*" , (req,res,next)=>{
     next(new ExpressError(404 , "Page not found!"))
 })
+
 
 //middleware
 app.use((err,req,res,next)=>{

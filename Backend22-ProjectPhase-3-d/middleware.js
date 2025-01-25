@@ -27,7 +27,7 @@ module.exports.validateReview = (req,res,next)=>{
 module.exports.isLoggedIn = (req,res,next)=>{
     //in our req object a property named 'originalUrl' through this property we can access name of path through which this request has beed asked for.For example if a user is not logged in and he tries to add a new list or edit a listing then in this case our server will ask him to login first we after successfully loggin our server should redirect our user to path he was asking for.To implement this feature we must get name of path for which user was asking and then we must save this path in some global variable like inside req.session
     
-    if(!req.isAuthenticated()){ //isAuthenticated method is provided by passport which is used for authentication while is there any user logged-in in current session or not.If logged in then it return true else false.
+    if(!req.isAuthenticated()){ //isAuthenticated method is provided by passport which is used for authentication while is there any user logged-in in current session or not.If logged in then it will return true else false.
         req.session.redirectUrl = req.originalUrl;
         req.flash("error","You must be logged in first!");
         return res.redirect("/login");

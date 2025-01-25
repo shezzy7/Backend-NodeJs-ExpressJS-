@@ -91,9 +91,11 @@
         </div>
       </div>
      </div>
-
+    
         <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
-            <%for(let list of listing){%>
+            
+              
+            <%if(listing && listing.length ){for(let list of listing){%>
                 <a href="/listings/<%=list._id%>" class="listing-link">
                     <div class="card col listing-card">
                         <img src="<%=list.image.url%>" class="card-img-top" alt="listing-image" style="height: 20rem;">
@@ -108,6 +110,8 @@
                         </div>
                       </div>
                 </a>
+            <%}} else{ %>
+              <h1>No data available in listings</h1>
             <%}%>
         </div>
 
