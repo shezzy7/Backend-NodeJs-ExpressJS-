@@ -44,17 +44,9 @@
    
     <!-- filters -->
      <div id="filters">
-      <div class="filter">
+      <div class="filter" id="Room" >
         <div><i class="fa-solid fa-bed"></i></div>
         <p>Rooms</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-city"></i></div>
-        <p>Top cities</p>
-      </div>
-      <div class="filter">
-        <div><i class="fa-solid fa-fire"></i></div>
-        <p>Trending</p>
       </div>
       <div class="filter">
         <div><i class="fa-brands fa-galactic-republic"></i></div>
@@ -62,15 +54,16 @@
       </div>
       <div class="filter">
         <div><i class="fa-solid fa-mountain"></i></div>
-        <p>Mountains</p>
+        <p>Mountain</p>
+        
       </div>
       <div class="filter">
         <div><i class="fa-solid fa-chess-rook"></i></div>
-        <p>Chef's kitchen</p>
+        <p>Kitchen</p>
       </div>
       <div class="filter">
         <div><i class="fa-solid fa-person-swimming"></i></div>
-        <p>Swimming Pools</p>
+        <p>Pool</p>
       </div>
       <div class="filter">
         <div><i class="fa-solid fa-umbrella-beach"></i></div>
@@ -78,7 +71,7 @@
       </div>
       <div class="filter">
         <div><i class="fa-solid fa-money-bill-wheat"></i></div>
-        <p>Farms</p>
+        <p>Farm</p>
       </div>
       <div class="filter">
         <div><i class="fa-solid fa-tents"></i></div>
@@ -119,17 +112,25 @@
 </body>
 
 <script>
+
+
   let taxButton = document.getElementById("flexSwitchCheckDefault");
   taxButton.addEventListener("click",()=>{
+    
     let taxes = document.getElementsByClassName("taxes");
-    console.log(taxes);
     for(tax of taxes){
       if(tax.style.display!="inline"){
         tax.style.display="inline";
+        console.log("Inline")
       }else{
         tax.style.display="none";
       }
-
     }
+    
   })
+
+  
+
+  // eventlistner for filters
+
 </script>

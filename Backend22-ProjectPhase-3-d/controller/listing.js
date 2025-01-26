@@ -30,7 +30,8 @@ module.exports.createListing = async (req, res, next) => {
         .send()
         // our varibale coordinates will give us a whole object body inside this object there's another object features(which is an array of size 1) inside which there is an object named geometry which contains an of size of 2 which contains our given locations  
         
-    
+    console.log(req.body.listing.options);
+
     let list = new Listing(req.body.listing);//fetching data from request body.As we have named each input section as a key of an object named lisitng.
     list.owner = req.user;
     // we also have to save info of image 
@@ -38,6 +39,7 @@ module.exports.createListing = async (req, res, next) => {
     let filename = req.file.filename;
     list.image = {url,filename}
     list.geometry = coordinates1.body.features[0].geometry;
+    list.catagory = req.body.listing.options;
     await list.save();
     console.log(list);
     req.flash("success", "New Listing added successfully!");

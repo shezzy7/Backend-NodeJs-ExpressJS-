@@ -30,15 +30,40 @@
                         </div>
                     </div>
                     <!-- Here in our project we want to upload an image instead of pasting url of image.For this purpose we have to make changes inour input file.Currently our code on backend is taking this inpur data from url.And we are also sending data in url but here we want to send some file for this purpose we have add an enctype in our form first -->
-                    <div class="mb-3">
-                        <!-- we will make its type to file for uploading image -->
-                        <label for="image" class="form-label">Upload Image</label>
-                        <input type="file"  name="listing[image]" class="form-control"
-                            required>
-
-
-                        <div class="invalid-feedback">
-                            Please upload an Image
+                    <div class="row">
+                        <div class="mb-3 col-md-8">
+                            <!-- we will make its type to file for uploading image -->
+                            <label for="image" class="form-label">Upload Image</label>
+                            <input type="file"  name="listing[image]" class="form-control"
+                                required>
+    
+    
+                            <div class="invalid-feedback">
+                                Please upload an Image
+                            </div>
+                        </div>
+                        <!-- category dropdown -->
+                        <div class="col-md-4">
+                                <div class="dropdown">
+                                    <p style="display: inline;">Select categories</p>
+                                    <button class="btn btn-primary dropdown-toggle mt-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Click to Select
+                                    </button>
+                                    <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton" style="min-width: 200px;">
+                                        <li><label><input type="checkbox" name="listing[options][]"  value="Rooms" class="form-check-input"> Rooms</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Arctic" class="form-check-input"> Arctic</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Pool" class="form-check-input"> Pool</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Kitchen" class="form-check-input"> Kitchen</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Mountain" class="form-check-input"> Mountain</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Farm" class="form-check-input"> Farm</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Camping" class="form-check-input"> Camping</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Beach" class="form-check-input"> Beach</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Desert" class="form-check-input"> Desert</label></li>
+                                    </ul>
+                                </div>
+                                
+                           
+    
                         </div>
                     </div>
                     <div class="row">

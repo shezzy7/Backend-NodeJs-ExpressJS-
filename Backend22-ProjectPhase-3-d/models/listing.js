@@ -57,7 +57,13 @@ let listingSchema = new Schema({
           type: [Number],
           required: true
         }
-      }
+    },
+    catagory:{
+        type : {
+            type:String,
+            enum:["Arctic","Mountain","Pool","Farms","Pool","Kitchen","Camping","Desert","Beach"]
+        }
+    }
 });
 // we want that when we delete a listing from our collection then all the reviews present in this listing must be also deleted from reviews collection.So for this purpose we use a mongoose middleware 
 listingSchema.post("findOneAndDelete", async (list) => {
