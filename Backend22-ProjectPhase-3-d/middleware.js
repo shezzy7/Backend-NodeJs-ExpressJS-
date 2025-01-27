@@ -5,7 +5,9 @@ let ExpressError = require("./utils/ExpressError.js");
 
 module.exports.validateListing = (req,res,next)=>{
     //this function will check whether given input is in correct formate if it is then it will call next method which will execute wrapAsync else this will throw a error
+     
     let {error} = listingSchema.validate(req.body);
+    
     if(error){
         // throw new ExpressError(400,"Entered data is incorrect or missing something")
         //we can also do a better thing which is that our error contains a property details which contains detail of each error.Inside this detail object there is a property which is message.So we can get messages and send them to client as our error message.For this first we have extract all the messages

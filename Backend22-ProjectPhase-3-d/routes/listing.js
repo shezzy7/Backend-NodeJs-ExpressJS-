@@ -24,24 +24,20 @@ router.route("/")
 // })
 //add one
 // We must check first whether user is login or not before doing any operation on this site.For this purpose we are using a middleware which first check wheather user is logged in or not
-router.get("/new", isLoggedIn, lisitngController.renderNewForm);
+router.route("/filter").get(wrapAsync(lisitngController.filterListing));
+router.route("/new").get(isLoggedIn, lisitngController.renderNewForm);
 
-
-router.route("/search").get(wrapAsync(lisitngController.searchCountry))
+router.route("/search").get(wrapAsync(lisitngController.searchCountry));
+// router.route("/filter").get(wrapAsync(lisitngController.filterListing));
 // combining all those routes those have same request route.
+
 router.route("/:id")
 .get(wrapAsync(lisitngController.showListing))
 .put(isLoggedIn, isOwner,upload.single("listing[image]"), validateListing, wrapAsync(lisitngController.updateListing))
 .delete(isLoggedIn, isOwner, wrapAsync(lisitngController.destroyListing))
+
 //edit
 // AS we want that only that user can edit a listing who is the user of that listing.For this purpose we can identify wheather current user is the owner of that listing or not.If he is the owner then we will allow him to edit else we will not allow him.Foe thi purpose we have defined a middleware in middleware.js file and are using that middleware here nemed 'isOwner'
 router.route("/:id/edit").get( isLoggedIn, isOwner, wrapAsync(lisitngController.renderEditForm))
 
-
-
-
-
 module.exports = router;
-
-
-

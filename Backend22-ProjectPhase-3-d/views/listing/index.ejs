@@ -12,7 +12,7 @@
     border: 1px solid black;
     border-radius: 1rem;
     padding: 1rem;
-    margin-left: 8rem;
+    margin-left: 10rem;
     height: 3rem;
     display: flex;
     align-items: center;
@@ -21,11 +21,14 @@
     text-align: center;
     
     margin-top: 2rem;
-    opacity: 0.7;
+    /* opacity: 0.7; */
     transform: 0.5s;
   }
   .filter p{
-    font-size: 0.8rem;
+    font-size: 1rem;
+    color: black;
+    display: block;
+    text-decoration: none;
   }
   .filter:hover{
     opacity: 1;
@@ -43,7 +46,7 @@
   <!-- flash messsage -->
    
     <!-- filters -->
-     <div id="filters">
+     <div id="filters" class="mb-3">
       <div class="filter" id="Room" >
         <div><i class="fa-solid fa-bed"></i></div>
         <p>Rooms</p>
@@ -77,6 +80,7 @@
         <div><i class="fa-solid fa-tents"></i></div>
         <p>Camping</p>
       </div>
+      
       <div class="tax-toggle">
         <div class="form-check-reverse form-switch">
           <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
@@ -86,7 +90,6 @@
      </div>
     
         <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
-            
               
             <%if(listing && listing.length ){for(let list of listing){%>
                 <a href="/listings/<%=list._id%>" class="listing-link">
@@ -128,8 +131,29 @@
     }
     
   })
-
   
+
+  const filters = document.querySelectorAll(".filter");
+
+// Add click event listener to each filter
+filters.forEach((filter) => {
+  filter.style.opacity = 0.7; // Set initial opacity for all filters
+  filter.addEventListener("click", () => {
+    // Reset opacity for all filters
+    
+
+    // Set clicked filter to opacity 1 and underline
+    filter.style.opacity = 1;
+    filter.style.textDecoration = "underline";
+
+    // Get the filter name (from the <a> tag's text content)
+    const filterName = filter.querySelector("p").textContent.trim();
+
+    // Redirect to the server with the filter name as a query parameter
+    window.location.href = `/listings/filter?filterName=${encodeURIComponent(filterName)}`;
+  });
+});
+
 
   // eventlistner for filters
 

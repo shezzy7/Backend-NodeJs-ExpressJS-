@@ -8,7 +8,9 @@ let listingSchema = Joi.object({
         location : Joi.string().required(),
         country : Joi.string().required(),
         price : Joi.number().required().min(0),
-        image : Joi.string().allow("",null)
+        image : Joi.string().allow("",null),
+        contact:Joi.number().required(),
+        options:Joi.array().items(Joi.string()).optional()
 
     }).required()
 })

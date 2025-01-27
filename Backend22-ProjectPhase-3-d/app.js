@@ -80,6 +80,7 @@ app.use((req,res,next)=>{   //variabled defined in locals of res can be accessed
     res.locals.currUser = req.user;//our req.user contains info of user loged-in in current session
     next()
 })
+
 app.use("/listings" , listingsRouter);
 app.use("/" , usersRouter);
 app.use("/listings/:id/review" , reviewsRouter);//Variables values does not pass to child paths like :id value here will not be going to review.js file and will be accessible to app.js only.For making it accessible to chile paths we go to file of child paths like review here and there while calling router through express we pass an option in it which is {mergeParams:true} 

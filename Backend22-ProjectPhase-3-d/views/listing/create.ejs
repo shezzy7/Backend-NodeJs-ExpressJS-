@@ -50,15 +50,15 @@
                                         Click to Select
                                     </button>
                                     <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton" style="min-width: 200px;">
-                                        <li><label><input type="checkbox" name="listing[options][]"  value="Rooms" class="form-check-input"> Rooms</label></li>
-                                        <li><label><input type="checkbox" name="listing[options][]" value="Arctic" class="form-check-input"> Arctic</label></li>
-                                        <li><label><input type="checkbox" name="listing[options][]" value="Pool" class="form-check-input"> Pool</label></li>
-                                        <li><label><input type="checkbox" name="listing[options][]" value="Kitchen" class="form-check-input"> Kitchen</label></li>
-                                        <li><label><input type="checkbox" name="listing[options][]" value="Mountain" class="form-check-input"> Mountain</label></li>
-                                        <li><label><input type="checkbox" name="listing[options][]" value="Farm" class="form-check-input"> Farm</label></li>
-                                        <li><label><input type="checkbox" name="listing[options][]" value="Camping" class="form-check-input"> Camping</label></li>
-                                        <li><label><input type="checkbox" name="listing[options][]" value="Beach" class="form-check-input"> Beach</label></li>
-                                        <li><label><input type="checkbox" name="listing[options][]" value="Desert" class="form-check-input"> Desert</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]"  value="Rooms" class="form-check-input">Rooms</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Arctic" class="form-check-input">Arctic</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Pool" class="form-check-input">Pool</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Kitchen" class="form-check-input">Kitchen</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Mountain" class="form-check-input">Mountain</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Farm" class="form-check-input">Farm</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Camping" class="form-check-input">Camping</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Beach" class="form-check-input">Beach</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Desert" class="form-check-input">Desert</label></li>
                                     </ul>
                                 </div>
                                 
@@ -88,14 +88,26 @@
                         </div>
 
                     </div>
-                    <div class="mb-3">
-                        <label for="location" class="form-label">Location </label>
-
-                        <input type="text" placeholder="Enter Location" name="listing[location]" class="form-control needs-validation"
-                            required>
-
-                        <div class="invalid-feedback">
-                            Please enter a valid location
+                    <div class="row">
+                        <div class="mb-3 col-6">
+                            <label for="location" class="form-label">Location</label>
+    
+                            <input type="text" placeholder="City,Country" name="listing[location]" class="form-control needs-validation"
+                                required>
+    
+                            <div class="invalid-feedback">
+                                Please enter a valid location
+                            </div>
+                        </div>
+                        <div class="mb-3 col-6">
+                            <label for="contact" class="form-label">Contact No</label>
+    
+                            <input type="text" placeholder="Please enter your whatsapp number" name="listing[contact]" class="form-control needs-validation"
+                                required>
+    
+                            <div class="invalid-feedback">
+                                Please enter a valid Number
+                            </div>
                         </div>
                     </div>
 

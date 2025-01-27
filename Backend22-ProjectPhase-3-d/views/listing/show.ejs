@@ -20,9 +20,11 @@
 
                     <br>
 
-                    <p class="card-text">Owned by <i>
+                    <p class="card-text">Owned by <b><i>
                             <%=list.owner.username%>
-                        </i></p>
+                        </i>
+                        </b>
+                    </p>
                     <p class="card-text">
                         <%=list.description%>
                     </p>
@@ -32,10 +34,16 @@
                     </p>
                     <p class="card-text"><b>
                             <%=list.country%>
-                        </b></p>
-                        
+                        </b>
+                    </p>
+                    <p class="card-text ">
+                        <a href="https://wa.me/<%=list.contact%>" target="_blank" class="btn btn-success">
+                            <i class="fa-brands fa-whatsapp"></i> Contact for Booking
+                        </a>
+                    </p>   
                 </div>
 
+                
             </div>
             <!-- here we want to show edit and delete buttons only to that user who creates that specific listing.
             For this purpose we can compare the owner id of that listing and the id of user who is currently logged in , if both are same then it means that current user has added this listing so he can perform these operations,but we are using this functionality throuh a middleware -->
@@ -52,7 +60,7 @@
                 </div>
 
                 <%}%>
-
+                
                     <!-- Creating review form -->
                     <!-- we will allow a user to create a review only if he is loged in so we will show creating a review options only to that user who is loged in -->
                     <%if(currUser ){%>
