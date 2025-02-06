@@ -45,10 +45,6 @@ let listingSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    contact:{
-        type:Number,
-        required:true
-    },
     // we want to store coordinates of given loaction in our this schema.And we want to store it in geoejs formate.Basically this formate is given by mongoose which is used for storing coordinates etc.And also the data of coordinates coming from our mapbox is in the form of geojson.
     //For defining its schema we can go to page -> https://mongoosejs.com/docs/geojson.html
     //and there we will see in schema bewlo schema but here we have replaced location with geometry

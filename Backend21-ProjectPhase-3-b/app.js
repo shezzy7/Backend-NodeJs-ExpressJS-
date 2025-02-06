@@ -4,7 +4,7 @@
 if(process.env.NODE_ENV!="production"){ //later we will be creating a variable in which we will be storing our level that whether we are working on production level or development level.And we will be using our env file only whene we will be in development level.
     require("dotenv").config()
 }
-console.log(process.env.CLOUD_NAME);
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -17,11 +17,10 @@ const listingsRouter = require("./routes/listing.js");
 const reviewsRouter = require("./routes/review.js");
 const usersRouter = require("./routes/user.js");
 const User = require("./models/user.js");
-const passport = require("passport");
+const passport = require("passport");//for applying authenticationa and authorization using 'passport' plug-in
 const localStrategy = require("passport-local");
 const port = 8080;
 const ejsMate = require("ejs-mate");//for using same navebar and footer in our all files.Mean we use this for upploading all the content of a file on another file.like here we we pasting all the data of navbar on each file using layout method.
-
 //setting views dir as default path for ejs files.
 app.set("views",path.join(__dirname,"views") );
 app.set("view engine" , "ejs");//setting engine to execute ejs files.

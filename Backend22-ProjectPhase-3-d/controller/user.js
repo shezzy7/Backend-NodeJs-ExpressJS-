@@ -3,9 +3,9 @@ const User = require("../models/user.js");
 
 module.exports.sigup = async (req, res) => {
     try {
-        let { username, email, password } = req.body;
-        let newUser = new User({ email, username });
-        console.log(newUser)
+        let { username, email, password,phone } = req.body;
+        let newUser = new User({ email, username,phone });
+        
         await User.register(newUser, password);//register method is used to store info of user who is registering.This method takes some paramas one of them is object containing info like username,email etc and other is password.A third param is optional.
 
         // if we want that after signup we must be loged-in to our site automatically then we use passport's method login

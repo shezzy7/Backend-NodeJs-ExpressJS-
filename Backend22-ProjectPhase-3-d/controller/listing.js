@@ -49,6 +49,7 @@ module.exports.createListing = async (req, res, next) => {
 }
 //show a specifc listing
 module.exports.showListing = async (req, res) => {
+    
     let { id } = req.params;
     let list = await Listing.findById(id)
     .populate({
@@ -58,9 +59,12 @@ module.exports.showListing = async (req, res) => {
         },
     }).populate("owner"); //we want to show name of author of each review with it.As we know that in each listing there is a reveiws section in which each element  is refering to Review model.In review model there is a author section which and this author is refering to User model which will provide us info of that user.
     //So here we are populating our listing such as we say that  in Listing populate reviews and then for each review populate author and then after this we are populating owner of that listing.
+    // console.log(list);
+    // res.send(list);
     if (!list) {
         req.flash("error", "Listing you are asking for does not exists!")
         res.redirect("/listings");
+        return;
     }
     res.render("./listing/show.ejs", { list });
 }
@@ -96,11 +100,17 @@ module.exports.updateListing=async (req, res) => {
 
     let { id } = req.params;
     let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+    let coordinates1 = await geocodingClient.forwardGeocode({
+        query: req.body.listing.location,
+        limit: 1 //limit is the number of how many possible coordinates we want.
+      })
+        .send()
     if(typeof req.file !== "undefined"){//user can upload a new image or not while editing.If he is not uploading a new image then req.file will be undefined else it will be containing some data and we will add to listing.
         let url = req.file.path;
         let filename = req.file.filename;
         listing.image = {url,filename};
-        list.geometry = coordinates1.body.features[0].geometry;
+        console.log(req.body);
+        listing.geometry = coordinates1.body.features[0].geometry;
         await listing.save();
     }
     req.flash("success", "Listing Updated!");
@@ -111,10 +121,10 @@ module.exports.updateListing=async (req, res) => {
 // search country
 module.exports.searchCountry = async(req,res)=>{
     let {search:country} = req.query;
-    console.log(country);
     
-    let listing = await Listing.find({country});
-    console.log(listing)
+    
+    let listing = await Listing.find({ country: { $regex: country, $options: 'i' } });
+
     if(!(listing && listing.length)){
         req.flash("error",`Sorry,We found no place in ${country}!`)
         return res.redirect("/listings");
