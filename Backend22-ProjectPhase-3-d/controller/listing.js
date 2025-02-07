@@ -140,3 +140,6 @@ module.exports.filterListing = async(req,res)=>{
     
 }
 
+module.exports.applyTax = async(req,res)=>{
+    
+}

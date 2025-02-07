@@ -125,15 +125,14 @@
 
     let taxButton = document.getElementById("flexSwitchCheckDefault");
     taxButton.addEventListener("click", () => {
-
-      let taxes = document.getElementsByClassName("taxes");
-      for (tax of taxes) {
-        if (tax.style.display != "inline") {
-          tax.style.display = "inline";
-          console.log("Inline")
-        } else {
-          tax.style.display = "none";
-        }
+      console.log("Clicked")
+      if(listing && listing.length && listing[0].taxApplied){
+        // make it unapply
+        
+      }else if(listing && listing.length && !(listing[0].taxApplied)){
+        // apply
+        
+  
       }
 
     })
@@ -147,12 +146,11 @@
       filter.addEventListener("click", () => {
         // Reset opacity for all filters
 
-
         // Set clicked filter to opacity 1 and underline
         filter.style.opacity = 1;
         filter.style.textDecoration = "underline";
 
-        // Get the filter name (from the <a> tag's text content)
+       
         const filterName = filter.querySelector("p").textContent.trim();
 
         // Redirect to the server with the filter name as a query parameter

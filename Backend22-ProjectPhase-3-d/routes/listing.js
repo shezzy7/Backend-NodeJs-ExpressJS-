@@ -26,7 +26,7 @@ router.route("/")
 // We must check first whether user is login or not before doing any operation on this site.For this purpose we are using a middleware which first check wheather user is logged in or not
 router.route("/filter").get(wrapAsync(lisitngController.filterListing));
 router.route("/new").get(isLoggedIn, lisitngController.renderNewForm);
-
+router.route("/applyTax").get(lisitngController.applyTax);
 router.route("/search").get(wrapAsync(lisitngController.searchCountry));
 // router.route("/filter").get(wrapAsync(lisitngController.filterListing));
 // combining all those routes those have same request route.
