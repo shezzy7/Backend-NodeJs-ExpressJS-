@@ -65,7 +65,10 @@ label{
     font-weight: 540; 
 }
 
-#map{
+#map {
     height: 350px;
-    width: 90vh;
+    width: 100%; /* Make it fully responsive */
+    max-width: 600px; /* Set a reasonable max-width */
+    margin: auto; /* Center it */
+    border-radius: 10px; /* Optional: Make it look better */
 }

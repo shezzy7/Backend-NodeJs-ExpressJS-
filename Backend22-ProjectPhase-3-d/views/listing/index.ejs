@@ -10,14 +10,21 @@
     }
 
     .tax-toggle {
-      border: 1px solid black;
-      border-radius: 1rem;
-      padding: 1rem;
-      margin-left: 10rem;
-      height: 3rem;
-      display: flex;
-      align-items: center;
-    }
+    border: 1px solid black;
+    border-radius: 1rem;
+    padding: 1rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers text inside */
+    
+    /* Responsive Fixes */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px; /* Limits size on large screens */
+    width: 80%; /* Adapts to smaller screens */
+}
+
 
     .filter {
       text-align: center;
@@ -121,20 +128,35 @@
   </body>
 
   <script>
-
-
+    
     let taxButton = document.getElementById("flexSwitchCheckDefault");
-    taxButton.addEventListener("click", () => {
-      console.log("Clicked")
-      if(listing && listing.length && listing[0].taxApplied){
-        // make it unapply
+    async function setBtn(){
+    let tax = await fetch("/listings/getData");
+    let Tax = await tax.json();
+    console.log("Taxx",Tax)
+    if(Tax[0].taxApplied){
+      taxButton.checked = true;
+    }
+  }
+  setBtn();
+  taxButton.addEventListener("change", async (event) => {
+    console.log("I'm displaying tax ")
+    let tax = await fetch("/listings/getData");
+    let Tax = await tax.json();
+      
+      event.preventDefault();
+      console.log(Tax[0].taxApplied)
+      if(Tax[0].taxApplied){
         
-      }else if(listing && listing.length && !(listing[0].taxApplied)){
-        // apply
-        
-  
+        console.log("removing tax")
+        window.location.href="/listings/removeTax";
       }
+      else{
+        console.log("applying tax")
 
+        window.location.href="/listings/applyTax";
+      }
+      
     })
 
 
@@ -149,7 +171,6 @@
         // Set clicked filter to opacity 1 and underline
         filter.style.opacity = 1;
         filter.style.textDecoration = "underline";
-
        
         const filterName = filter.querySelector("p").textContent.trim();
 

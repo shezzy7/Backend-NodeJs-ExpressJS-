@@ -27,7 +27,9 @@ router.route("/")
 router.route("/filter").get(wrapAsync(lisitngController.filterListing));
 router.route("/new").get(isLoggedIn, lisitngController.renderNewForm);
 router.route("/applyTax").get(lisitngController.applyTax);
+router.route("/removeTax").get(lisitngController.removeTax);
 router.route("/search").get(wrapAsync(lisitngController.searchCountry));
+router.route("/getData").get(lisitngController.getData);
 // router.route("/filter").get(wrapAsync(lisitngController.filterListing));
 // combining all those routes those have same request route.
 

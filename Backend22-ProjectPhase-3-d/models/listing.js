@@ -61,10 +61,16 @@ let listingSchema = new Schema({
     },
     // Add options field to store the selected categories
     options: [String],
+    tax:{
+        type : Number,
+        required : true
+    },
     taxApplied:{
         type:Boolean,
-        default:false
-    }
+        required:true,
+        default:false,
+
+    },
 });
 // we want that when we delete a listing from our collection then all the reviews present in this listing must be also deleted from reviews collection.So for this purpose we use a mongoose middleware 
 listingSchema.post("findOneAndDelete", async (list) => {

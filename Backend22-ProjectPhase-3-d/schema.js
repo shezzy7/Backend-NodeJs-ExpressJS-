@@ -9,7 +9,8 @@ let listingSchema = Joi.object({
         country : Joi.string().required(),
         price : Joi.number().required().min(0),
         image : Joi.string().allow("",null),
-        options:Joi.array().items(Joi.string()).optional()
+        options:Joi.array().items(Joi.string()).optional(),
+        // tax:Joi.number().required(),
 
     }).required()
 })

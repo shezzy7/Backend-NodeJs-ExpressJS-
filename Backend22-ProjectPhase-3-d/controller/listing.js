@@ -26,20 +26,22 @@ module.exports.createListing = async (req, res, next) => {
     let coordinates1 = await geocodingClient.forwardGeocode({
         query: req.body.listing.location,
         limit: 1 //limit is the number of how many possible coordinates we want.
-      })
+    })
         .send()
-        // our varibale coordinates will give us a whole object body inside this object there's another object features(which is an array of size 1) inside which there is an object named geometry which contains an of size of 2 which contains our given locations  
-        
+    // our varibale coordinates will give us a whole object body inside this object there's another object features(which is an array of size 1) inside which there is an object named geometry which contains an of size of 2 which contains our given locations  
+
     console.log(req.body.listing);
-    
+
     let list = new Listing(req.body.listing);//fetching data from request body.As we have named each input section as a key of an object named lisitng.
     list.owner = req.user;
     // we also have to save info of image 
-    let url= req.file.path;
+    let url = req.file.path;
     let filename = req.file.filename;
-    list.image = {url,filename}
+    list.image = { url, filename }
     list.geometry = coordinates1.body.features[0].geometry;
-    
+    let listPrice = Number(req.body.listing.price);
+    list.tax = listPrice * 0.16;
+    console.log(list.tax)
     // list.catagory = req.body.listing.options;
     await list.save();
     console.log(list);
@@ -49,15 +51,15 @@ module.exports.createListing = async (req, res, next) => {
 }
 //show a specifc listing
 module.exports.showListing = async (req, res) => {
-    
+
     let { id } = req.params;
     let list = await Listing.findById(id)
-    .populate({
-        path: "reviews",
-         populate: {
-            path: "author"
-        },
-    }).populate("owner"); //we want to show name of author of each review with it.As we know that in each listing there is a reveiws section in which each element  is refering to Review model.In review model there is a author section which and this author is refering to User model which will provide us info of that user.
+        .populate({
+            path: "reviews",
+            populate: {
+                path: "author"
+            },
+        }).populate("owner"); //we want to show name of author of each review with it.As we know that in each listing there is a reveiws section in which each element  is refering to Review model.In review model there is a author section which and this author is refering to User model which will provide us info of that user.
     //So here we are populating our listing such as we say that  in Listing populate reviews and then for each review populate author and then after this we are populating owner of that listing.
     // console.log(list);
     // res.send(list);
@@ -77,10 +79,10 @@ module.exports.destroyListing = async (req, res) => {
     await Listing.findByIdAndDelete(id);
     req.flash("success", "Listing Deleted Successfully!");
     res.redirect("/listings");
-}           
+}
 
 //render Edit form
-module.exports.renderEditForm=async (req, res) => {
+module.exports.renderEditForm = async (req, res) => {
     let { id } = req.params;
     let list = await Listing.findById(id);
     if (!list) {
@@ -91,24 +93,24 @@ module.exports.renderEditForm=async (req, res) => {
     // now we want that while editing a listing a user should be also able to see previous image.But we want to change its pixels for reducing load from website.For reducing pixles of an image cloudaniry provides us a method.In each uploaded link cloudaniry adds an upload route if we go to cloudaniry site then we can see that how we can change pixels.So here we will be first fetching image's url and replaceing "/uploads" by "/uploads/w_300" which will change its pixles and we will change its pixles
     let originalImageUrl = list.image.url;
     console.log(originalImageUrl);
-    originalImageUrl.replace("/upload","/upload/h_250,w_300")
+    originalImageUrl.replace("/upload", "/upload/h_250,w_300")
     console.log(originalImageUrl);
-    res.render("./listing/edit.ejs", { list ,originalImageUrl});
+    res.render("./listing/edit.ejs", { list, originalImageUrl });
 }
 //update a listing
-module.exports.updateListing=async (req, res) => {
+module.exports.updateListing = async (req, res) => {
 
     let { id } = req.params;
     let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
     let coordinates1 = await geocodingClient.forwardGeocode({
         query: req.body.listing.location,
         limit: 1 //limit is the number of how many possible coordinates we want.
-      })
+    })
         .send()
-    if(typeof req.file !== "undefined"){//user can upload a new image or not while editing.If he is not uploading a new image then req.file will be undefined else it will be containing some data and we will add to listing.
+    if (typeof req.file !== "undefined") {//user can upload a new image or not while editing.If he is not uploading a new image then req.file will be undefined else it will be containing some data and we will add to listing.
         let url = req.file.path;
         let filename = req.file.filename;
-        listing.image = {url,filename};
+        listing.image = { url, filename };
         console.log(req.body);
         listing.geometry = coordinates1.body.features[0].geometry;
         await listing.save();
@@ -119,27 +121,51 @@ module.exports.updateListing=async (req, res) => {
 }
 
 // search country
-module.exports.searchCountry = async(req,res)=>{
-    let {search:country} = req.query;
-    
-    
+module.exports.searchCountry = async (req, res) => {
+    let { search: country } = req.query;
     let listing = await Listing.find({ country: { $regex: country, $options: 'i' } });
-
-    if(!(listing && listing.length)){
-        req.flash("error",`Sorry,We found no place in ${country}!`)
+    if (!(listing && listing.length)) {
+        req.flash("error", `Sorry,We found no place in ${country}!`)
         return res.redirect("/listings");
     }
-    res.render("./listing/index.ejs",{listing});
+    res.render("./listing/index.ejs", { listing });
 }
 
-module.exports.filterListing = async(req,res)=>{
+module.exports.filterListing = async (req, res) => {
+    let listing = await Listing.find({ options: { $in: req.query.filterName } });
+    console.log("Filter triggered");
+    res.render("./listing/index.ejs", { listing });
+}
+
+module.exports.applyTax = async (req, res) => {
+    let listing = await Listing.find({});
+    for (list of listing) {
+        list.price = list.price + list.tax;
+        list.taxApplied = true;
+        await list.save();
+        console.log("seeted true")
+    }
+   
+    req.flash("success", "Tax applied")
     
-    let listing = await Listing.find({options:{$in:req.query.filterName}});
-    console.log("Filter triggered")
-    res.render("./listing/index.ejs",{listing});
+    res.redirect("/listings")
+}
+module.exports.removeTax = async (req, res) => {
+    let listing = await Listing.find({});
+    for (list of listing) {
+        list.price = list.price - list.tax;
+        list.taxApplied = false;
+        await list.save();
+    }
+
+    req.flash("success", "Tax removed");
+    res.redirect("/listings")
     
 }
 
-module.exports.applyTax = async(req,res)=>{
+module.exports.getData = async (req,res)=>{
+    let tax = await Listing.find({})
+    console.log(tax)
+    res.json(tax);
     
 }
