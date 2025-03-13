@@ -50,7 +50,7 @@ async function main(){
 }
 main()
 
-const store = Mongoose.creat({
+const store = MongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
         secret:"mysupersecretoptions",
