@@ -1,0 +1,111 @@
+<% layout("/layout/boilerplate") %>
+
+    <body>
+        <!-- As we have setted values of many attributes to be requird in our model schema so we also have to set them required in our frontend side for reducing errors.For this purpose we can use html's given required attribute which will ask to enter empty field where we will add this.But this required attribute works differently on different browsers but we want to set a fixed behaviour of our site.So for this purpose we will use bootstrap form handling methods.For this purpose we have to add a class in our form tag like here is "needs-validation" and also novalidate word.To implemant this logic bootstrap also provide us a js code to which we pastes in public/js/script.js file and will add this file path in a script tag here in this code.  -->
+        <div class="row mt-3 mb-3">
+            <div class="col-8 offset-2">
+                <h2>Add info</h2>
+                <!-- bydefault enctype of our form is setted as "application/x-www-form-urlencoded" but we have to change this to "multipart/form-data" for sending files-->
+                <form action="/listings" novalidate class="needs-validation" method="POST" enctype="multipart/form-data">
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title </label>
+                        <input type="text" placeholder="Enter a Catchy Title" name="listing[title]"
+                            class="form-control" required>
+                        <!-- bootsrap also provides us class with the help of which of we can show some message if user enter a valid data and alos can show a message when user enter in invalid data or doesn't enter any data in a require fiels.We do this the help of following classes. -->
+                        <div class="valid-feedback">
+                            Title looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please enter a title
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description </label>
+                        <textarea type="text" placeholder="Enter Description" name="listing[description]"
+                            class="form-control" required>  </textarea>
+
+                        <div class="invalid-feedback">
+                            Please tell us something about your place.
+                        </div>
+                    </div>
+                    <!-- Here in our project we want to upload an image instead of pasting url of image.For this purpose we have to make changes inour input file.Currently our code on backend is taking this inpur data from url.And we are also sending data in url but here we want to send some file for this purpose we have add an enctype in our form first -->
+                    <div class="row">
+                        <div class="mb-3 col-md-8">
+                            <!-- we will make its type to file for uploading image -->
+                            <label for="image" class="form-label">Upload Image</label>
+                            <input type="file"  name="listing[image]" class="form-control"
+                                required>
+    
+    
+                            <div class="invalid-feedback">
+                                Please upload an Image
+                            </div>
+                        </div>
+                        <!-- category dropdown -->
+                        <div class="col-md-4">
+                                <div class="dropdown">
+                                    <p style="display: inline;">Select categories</p>
+                                    <button class="btn btn-primary dropdown-toggle mt-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Click to Select
+                                    </button>
+                                    <ul class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton" style="min-width: 200px;">
+                                        <li><label><input type="checkbox" name="listing[options][]"  value="Rooms" class="form-check-input">Rooms</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Arctic" class="form-check-input">Arctic</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Pool" class="form-check-input">Pool</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Kitchen" class="form-check-input">Kitchen</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Mountain" class="form-check-input">Mountain</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Farm" class="form-check-input">Farm</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Camping" class="form-check-input">Camping</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Beach" class="form-check-input">Beach</label></li>
+                                        <li><label><input type="checkbox" name="listing[options][]" value="Desert" class="form-check-input">Desert</label></li>
+                                    </ul>
+                                </div>
+                                
+                           
+    
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="mb-3 col-md-4">
+                            <label for="price" class="form-label">Price </label>
+                            <input type="number" placeholder="Enter Price" name="listing[price]" class="form-control"
+                                required>
+
+                            <div class="invalid-feedback">
+                                Please provide cost of your place
+                            </div>
+                        </div>
+                        <div class="mb-3 col-md-8">
+                            <label for="country" class="form-label">Country </label>
+                            <input type="text" placeholder="Enter Country" name="listing[country]" class="form-control"
+                                required>
+
+                            <div class="invalid-feedback">
+                                Please enter name of your country
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col-9">
+                            <label for="location" class="form-label">Location</label>
+    
+                            <input type="text" placeholder="City,Country" name="listing[location]" class="form-control needs-validation"
+                                required>
+    
+                            <div class="invalid-feedback">
+                                Please enter a valid location
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <button class="btn btn-outline-success mt-3">Submit</button>
+                </form>
+            </div>
+        </div>
+        <script src="/js/script.js"></script>
+        
+    </body>

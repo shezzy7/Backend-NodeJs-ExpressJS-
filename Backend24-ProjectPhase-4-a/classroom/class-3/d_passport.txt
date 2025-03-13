@@ -1,0 +1,11 @@
+We can set authentication to our website by using passport by different methods(eg . sign-in with google/github/facebook/twitter etc).Here in our case we will be using simple username and password method.
+For using passport in our code we need to install it through npm by commands and we need to install given things for using passport in local way(setting username and password for login)
+-> npm i passport
+-> npm i passport-local
+-> npm i passport-local-mongoose
+Passport:-
+    Passport is an express compatible authentication middleware for Node.js.
+    Passport-Local Mongoose is a Mongoose plugin that simplifies building username and password login with Passport.
+    First you need to plugin Passport-Local Mongoose into your User schema like User.plugin(passportLocalMongoose);
+
+Our passport middleware uses pbkdf2 hashing algorithm.

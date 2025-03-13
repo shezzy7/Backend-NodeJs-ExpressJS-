@@ -1,0 +1,4 @@
+jamshahzad72242
+mkzSpigQ6PiLBnN1
+
+dblink-> mongodb+srv://jamshahzad72242:mkzSpigQ6PiLBnN1@cluster0.5bhv6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0  

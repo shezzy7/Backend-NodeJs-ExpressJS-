@@ -1,0 +1,160 @@
+<% layout("/layout/boilerplate.ejs") %>
+    <script>
+        const mapToken = "<%=process.env.MAP_TOKEN%>";
+        // as the data of geometry is in the form of geojson so we will convert it to json first and store it in a variable for making it accessible to map.js file.
+        const listing= <%-JSON.stringify(list)%>
+    </script>
+    
+
+    <body>
+        
+        <div class="row mt-3">
+            <div class="col-8 offset-3">
+                <br>
+                <h3>
+                    <%=list.title%>
+                </h3>
+            </div>
+            <div class="card col-6 offset-3 show-card listing-card">
+                <img src="<%=list.image.url%>" alt="list-image" class="card-img-top show-img">
+                <div class="card-body">
+
+                    <br>
+
+                    <p class="card-text">Owned by <b><i>
+                            <%=list.owner.username%>
+                        </i>
+                        </b>
+                    </p>
+                    <p class="card-text">
+                        <%=list.description%>
+                    </p>
+                    <p class="card-text">Rs.<%=list.price.toLocaleString("en-US")%>/night </p>
+                    <p class="card-text">
+                        <%=list.location%>
+                    </p>
+                    <p class="card-text"><b>
+                            <%=list.country%>
+                        </b>
+                    </p>
+                    <p class="card-text ">
+                        <a href="https://wa.me/<%=list.owner.phone%>" target="_blank" class="btn btn-success">
+                            <i class="fa-brands fa-whatsapp"></i> Contact for Booking
+                        </a>
+                    </p>   
+                </div>
+
+                
+            </div>
+            <!-- here we want to show edit and delete buttons only to that user who creates that specific listing.
+            For this purpose we can compare the owner id of that listing and the id of user who is currently logged in , if both are same then it means that current user has added this listing so he can perform these operations,but we are using this functionality throuh a middleware -->
+            <%if(currUser && currUser._id.equals(list.owner._id)){%>
+                <div class="btns mb-2">
+
+                    <a href="/listings/<%=list._id%>/edit" class="btn btn-primary col-1 offset-3 edit-btn">Edit</a>
+
+                    <form action="/listings/<%=list._id%>?_method=DELETE" method="POST" class="needs-validation"
+                        novalidate>
+
+                        <button class="btn  del-btn btn-danger offset-5">Delete</button>
+                    </form>
+                </div>
+
+                <%}%>
+                
+                    <!-- Creating review form -->
+                    <!-- we will allow a user to create a review only if he is loged in so we will show creating a review options only to that user who is loged in -->
+                    <%if(currUser ){%>
+                        <div class="col-8 offset-3 mb-3">
+                            <hr>
+                            <h4>Leave a Review</h4>
+                            <form action="/listings/<%=list._id%>/review" method="post" novalidate
+                                class="needs-validation">
+
+                                <div class="mb-3 mt-3">
+                                    <label for="rating" class="form-label">Rating</label>
+                                    <fieldset class="starability-slot">
+
+                                        <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]"
+                                            value="0" checked aria-label="No rating." />
+                                        <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+                                        <label for="first-rate1" title="Terrible">1 star</label>
+                                        <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+                                        <label for="first-rate2" title="Not good">2 stars</label>
+                                        <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+                                        <label for="first-rate3" title="Average">3 stars</label>
+                                        <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+                                        <label for="first-rate4" title="Very good">4 stars</label>
+                                        <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+                                        <label for="first-rate5" title="Amazing">5 stars</label>
+                                    </fieldset>
+                                </div>
+                                <div class="mb-3 mt-3">
+                                    <label for="comment" class="form-label">Comments</label>
+                                    <textarea name="review[comment]" id="comment" cols="25" rows="7"
+                                        class="form-control" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Please tell us a little bit about this place
+                                    </div>
+                                </div>
+                                <button class="btn btn-info">Submit</button>
+                            </form>
+
+                        </div>
+                        <%}%>
+
+                            <hr>
+                            <%if(list && list.reviews.length>0){%>
+                                <!-- Reviews section -->
+                                <div class="col-8 offset-3 ">
+                                    <h4>Reviews</h4>
+
+                                    <div class="row mb-3">
+                                        <% for(review of list.reviews) {%>
+                                            <div class="card col-5 ms-3 mb-3 p-2">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@<%=review.author.username%>
+                                                    </h5>
+                                                    <p class="starability-result card-text"
+                                                        data-rating="<%=review.rating%>">
+                                                    </p>
+                                                    <p class="card-text">
+                                                        <%=review.comment%>
+                                                    </p>
+                                                    <br>
+                                                    <p style="font-size: 10px;"><%= review.created_at %></p>
+
+
+                                                </div>
+                                                <!--We will be showing delete button to only that user who is the author of that listing.See here we will check if the id of current user equalls id of the author of that review-->
+                                                <%if(currUser && currUser._id.equals(review.author._id)){%>
+                                                    <form
+                                                        action="/listings/<%=list._id%>/review/<%=review._id%>?_method=DELETE"
+                                                        method="POST">
+                                                        <button class="btn btn-sm btn-dark mb-2">Delete</button>
+                                                    </form>
+                                                    <%}%>
+                                            </div>
+
+                                            <%}%>
+
+                                    </div>
+                                    
+                                </div>
+                                <hr>
+                                <%}%>
+
+                                <!-- adding a map for location entered by the user,we can see all the details how to implement a map in our webpage on docs.mapbox.com at this page we are given many libraries and we will be using 'Mapbox GL JS' library.we will go this library's documentation and there go to example section infact this url -> https://docs.mapbox.com/mapbox-gl-js/example  there we will be going to 'Display a map on a webpage' there we will be copying link tag and script tag given in head tag and adding them in our code.Then we will create a div where we want to add a map in website and we will give this id named 'map' and then go to our static css file and give some width and height to this div.
+                                Then after this we will be given some code in script tag inside body tag.We will copy this code given in script tag and copy this code and link this code to this file we can also add it here in script tag but here in our project we are placing this code in public/js/map.js file and we will connect this js file to this ejs file.-->
+                                <div class="col-8 offset-3 mb-3">
+                                    <h3>Where you'll be</h3>
+                                    <div id="map">
+
+                                    </div>
+                                </div>
+        </div>
+
+        <script src="/js/script.js"></script>
+        <script src="/js/map.js"></script>
+
+    </body>
