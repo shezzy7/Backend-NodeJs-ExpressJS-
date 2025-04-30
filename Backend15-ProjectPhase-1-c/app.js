@@ -35,7 +35,7 @@ app.use(express.urlencoded({extended:true}));//for reading coming from request.
 app.engine('ejs' , ejsMate);
 app.use(express.static(path.join(__dirname , "public")));
 const validateListing = (req,res,next)=>{
-    //this function will check whether given input is in correct formate if it is then it will call next method which will execute wrapAsync else this will throw a error
+    //this function will check whether given input is in correct formate if it is then it will call next method which will execute wrapAsync else this will throw a error.
     let {error} = listingSchema.validate(req.body);
     if(error){
         // throw new ExpressError(400,"Entered data is incorrect or missing something")

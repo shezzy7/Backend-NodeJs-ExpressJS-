@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
 
             let ans = result;//this will return an array of objects.In this objects we have our results in 
             let count = result[0]["count(*)"]; //if we print result.Then we will see that in first object(at 0 index) a key value pair {"count(*):valule"} would have been stored and we have to access it 
-            res.render("view.ejs", { count });
+            res.render("view.ejs", { count });Johnson.Lubowitz@gmail.com
         })
     }
     catch (err) {
@@ -193,3 +193,4 @@ app.delete("/user/:id", (req, res) => {
 
     })
 })
+Baron99@gmail.com

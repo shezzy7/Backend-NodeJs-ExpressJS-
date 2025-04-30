@@ -21,15 +21,15 @@
             </p>
             
             <!-- lets add a anchor tag for seeing post in detail -->
-             <a href="http://localhost:8080/posts/<%=post.id%>">See in detail</a> &nbsp;&nbsp;
-             <a href="http://localhost:8080/posts/<%=post.id%>/edit">Edit Post</a> &nbsp;
+             <a href="http://localhost:8080/posts/<%=post.id%>" method="get">See in detail</a> &nbsp;&nbsp;
+             <a href="http://localhost:8080/posts/<%=post.id%>/edit" method="get">Edit Post</a> &nbsp;
              <form method="post" action="/posts/<%=post.id%>?_method=DELETE" >
                 <button>Delete Post</button>
              </form>
         </div>
         <%}%>
 
-        <a href="http://localhost:8080/posts/create">Create A Post</a>
+        <a href="http://localhost:8080/posts/new">Create A Post</a>
 
 </body>
 

@@ -12,7 +12,7 @@ app.set("view engine" , "ejs");
 app.get("/ig/:username" , (req,res)=>{
     let {username} = req.params;
     let followers = ["hania" , "goodo" , "fiza"];
-    res.render("instagram" , {username , followers});
+    res.render("instagram.ejs" , {username , followers});
 })
 
 app.get("*" , (req,res)=>{

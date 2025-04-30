@@ -18,19 +18,21 @@ const { faker } = require('@faker-js/faker');
 
 
 // for interacting our server with our database we have to first connect our server with our database(mySql).
-//We doing this because we know that our client side sends a request to the server and now our server will interact with database to perform opertion on the basis of request by client.And after interacting with database a reponse is given back to server and this response is then sended to client.
+//We are doing this because we know that our client side sends a request to the server and now our server will interact with database to perform opertion on the basis of request by client.And after interacting with database a reponse is given back to server and this response is then sended to client.
 
-// So for connecting our database with server we have to install a package known as MySQL2.We can serach for it on mdn.command for installing -> npm i mysql2
+// So for connecting our sql database with server we have to install a package known as MySQL2.We can search for it on mdn.command for installing -> npm i mysql2
 // Using method is given on mdn.
 let mysql = require("mysql2");
 const connection =mysql.createConnection(
     {
+
     host: 'localhost',
     user: 'root',
     database: 'apna_database', //for creating a connection we must first create a database.And place name of that database here
     password:'hania46636' //we write password here which we setted while creating it.
   }
 );
+
 /*
 //for inserting data we save our queiries in variables and do this in following way
 let q = "INSERT INTO posts(id,username , email, password) VALUES (?, ?,?,?)";//Here question mark will be taken as placeholder mean we have to get some data here
@@ -46,7 +48,7 @@ catch(err){
 }
   */
  //What if we want to add many rows together
-//and in insertion command we replace all question marks by single one ? mark
+// in insertion command we replace all question marks by single one ? mark
 let q2 = "INSERT INTO posts(id,username,email,password) VALUES ?"; 
 //we send all the rows in a 2d array
 let data2 = [

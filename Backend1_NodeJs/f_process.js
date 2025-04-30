@@ -1,4 +1,5 @@
-//if we print on console -> console.log(process.argv); and run our code on repl then it will return an array contianing two elements one which will be the path of current file.
+//if we print on console -> console.log(process.argv);
+//  and run our code on repl then it will return an array contianing two elements one of them will be the path of current file.
 //but if we pass some arguments while running our this file then these arguments will be stored in our argv array.
 //syntax ->  node fileName.js arg1 arg2 arg3
 //we can give any type of data in arguments and we separate them by space and we write arguments after the name of file

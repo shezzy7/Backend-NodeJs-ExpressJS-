@@ -13,7 +13,10 @@
     <!-- for conditional statements we use an ejs tag <% %> -->
     <!-- we can see all these tags on ejs.co web -->
     <% if(diceVal==6){%>
-        <h2>Nice!Roll dice again</h2>
+        <h2>Wohoo it's 6!Roll dice again</h2>
+        <form action="http://localhost:3000/diceroll" method="get">
+            <button >Roll</button>
+        </form>
     <%}%>
     <%- include("./footer.ejs") %>
 </body>

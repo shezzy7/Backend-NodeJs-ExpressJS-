@@ -1,11 +1,12 @@
 /*      installations
 
-    npm inint -y
+    npm init -y
     npm i express
     npm i mongoose
     npm i path
     npm i ejs
     npm i method-override
+    
 */
 
 // Here we creating model for whatsaap which will have functioanlities of (_id , from , to , message , created_At)
@@ -99,7 +100,7 @@ app.get("/chats/:id/edit" , async (req,res)=>{
 app.put("/chats/:id" , async (req,res)=>{
     let {id} = req.params;
     let {newMsg} = req.body;
-    await Chat.findByIdAndUpdate(id , {msg:newMsg});
+    await Chat.findByIdAndUpdate(id , {msg:newMsg} , {setValiators:true});
     res.redirect("/chats");
 
 } )

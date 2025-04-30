@@ -1,9 +1,8 @@
-//for connection our js code with mongodb we need to require mongoose first
+//for connection our js code with mongodb we need to require mongoose first(mongoose must be installed through npm)
 const mongoose = require('mongoose');
-// then we write function provide on mongoose website.
+// then we write function provide on mongoose website for connecting mongoose with out database.
 async function main(){
-    await mongoose.connect("mongodb://127.0.0.1:27017/test");//here in this method htpps is replaced by word mongodb and localhost is replaced by value 127.0.0.1 and 27017 is port number while test is name of the database,We can change database name at any time we need(should be correct name of a database)
-
+    await mongoose.connect("mongodb://127.0.0.1:27017/test");//here in this method htpps is replaced by word mongodb and localhost is replaced by value 127.0.0.1 and 27017 is port number while test is name of the database,We can change database name at any time we need(should be correct name of a database on which we are going to work.)
 }
 // main funtion will return a promise.
 main().then(()=>{
@@ -20,11 +19,10 @@ main().then(()=>{
 //     email:String , 
 //     age : Number
 // })
-
 //now lets we want to create a collection college on which we want to apply above schema.
 //syntax-> const modelName = mongoose.model("collectionName" , schemaName);Genrally we give name to model same as the name of collection
 //const College = mongoose.model("College" , collegeSchema);//model in mongoose is class with which we construct documents.
-//The collection which we pass here, mongoose creates a collection of this name in our database and sets given scehma on this collection.It also makes some chages in collection like it makes our given collection name to pluraland converts it to small letters foe example here College will be converted to colleges.
+//The collection which we pass here, mongoose creates a collection of this name in our database and sets given scehma on this collection.It also makes some chages in collection like it makes our given collection name to plural and converts it to small letters for example here College will be converted to colleges.
 
 //we can also apply same schema on many collections.
 // const User = mongoose.model("User" , collegeSchema);
@@ -37,7 +35,7 @@ main().then(()=>{
 //     email : "shezzy@gmail.com",
 //     age : 22
 // });
-//We will use same schema as we pass will creating our model.
+//We will use same schema as we pass whill creating our model.
 //now for inserting this document in our collection we use another method-> documentName/objectName.save();
 // user1.save();
 //this save method after after saving given instance in collection it returns a promise.
@@ -50,7 +48,7 @@ main().then(()=>{
 // user2.save().then(res=>{
 //     console.log(res);
 // });
-// //so this is the method of inserting a single document in our collection.
+// // so this is the method of inserting a single document in our collection.
 
 // //we can also insert many documents together in our in our database.For this purpose we have method insertMany.In this method we wrap up our documents in a array and pass it in this method.This method is present in our model so we call it by our model name.
 // //Syntax-> ModelName.insertMany([{doc1} , {doc2},..])
@@ -70,7 +68,7 @@ main().then(()=>{
 //     console.log(res);
 // })
 
-//Note : Each time when we will run our code all these queries will run and each time this data will be added tou our database so after adding our data one time if we make some changes in our code and run our code again we should comment out our quries line for preventing from again adding the same data in our database.
+//Note : Each time when we will run our code all these queries will run and each time this data will be added to our database so after adding our data one time if we make some changes in our code and run our code again we should comment out our quries line for preventing from again adding the same data in our database.
 
 // Note : Mongoose use Operation Buffering
 //Which means mongoose lets us start using our models immdediately , without waiting for mongoose to establish a connection to MongoDB.
@@ -95,7 +93,7 @@ main().then(()=>{
 //     console.log(res);
 // })
 
-//we can all these method on mongoose documentation.
+//we can read these methods on mongoose documentation.
 
 
 //We can also update sepcific or all documents here using our update meethod.
@@ -115,8 +113,8 @@ main().then(()=>{
 // User.findOneAndUpdate({age:12} , {age:15}).then(res=>{
 //     console.log(res);
 // })
-//This will print the whole document whichhit has updated but will print previous value mean value before updating.
-//If we want to print result value after updating then we use an option.Options are given in mongoose documentation.
+//This will print the whole document which it has updated but will print previous value mean value before updating.
+//If we want to print result value after updating then we can use an option.Options are given in mongoose documentation.
 // User.findOneAndUpdate({name:"goodo"} , {age:15} , {new : true}).then(res=>{
 //     console.log(res);
 // })
@@ -148,7 +146,7 @@ main().then(()=>{
 //     console.log(res);
 // })
 //here this method will find document where attribute name has value "jawad" , will delete it from database and then will store all the info about this document in the result 
-//we can also delete a documents on the basis of i
+//we can also delete a documents on the basis of id
 // User.findByIdAndDelete("67567d50f58775b014e28c44").then(res=>{
 //     console.log(res);
 // })
@@ -177,7 +175,7 @@ let Amazon = mongoose.model("Amazone" , amazonSchema);
 // pdct1.save().then(res=>{
 //     console.log(res);
 // })
-//now if we want to add a document where name is abset then it will not be added in our collection.
+//now if we want to add a document where name is absent then it will not be added in our collection.
 //let pdct2 = new Amazon({price:23 , rating:5});//this will give us an error bcz name is not given here while in schema we are requiring it.
 // pdct2.save().then(res=>{
 //     console.log(res);
@@ -201,4 +199,5 @@ let Amazon = mongoose.model("Amazone" , amazonSchema);
 // }).catch(err=>{
 //     console.log(err);
 // })
+
 //this above code will give us error which will be that price must be >=1

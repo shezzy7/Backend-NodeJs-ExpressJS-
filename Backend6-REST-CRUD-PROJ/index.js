@@ -1,3 +1,4 @@
+// here we are going to build a simple crud app.Where we can create post,edit a post,see details of a post or delete a post.All of this we will doing with the help of rest apis.
 let express = require("express");
 let app = express();
 let {v4 : uuidv4} = require("uuid");
@@ -15,7 +16,7 @@ let posts =
         {
         id : uuidv4(),
         username : "Malang" , 
-        content : "Into the same river , no can enter twice" , 
+        content : "Into the same river , no man can enter twice" , 
         img : "/assets/download3.jpg" , 
         date : new Date()
         },
@@ -33,8 +34,8 @@ app.listen(port,()=>{
     console.log(`Listening on port no : ${port}`);
 })
 
-app.get("/posts",(req,res)=>{
-    console.log(posts[0].img);
+app.get("/posts", (req,res)=>{
+
     res.render("view.ejs",{posts} );
 
 })
@@ -50,7 +51,7 @@ app.post("/posts" ,(req,res)=>{
     let id = uuidv4();
     let date =  new Date();
     posts.push({username ,  content , img , id ,date});
-    console.log(img);
+
     res.redirect("/posts");
 })
 
@@ -60,12 +61,15 @@ app.get("/posts/:id/detail" , (req,res)=>{
     let post = posts.find((p)=>id===p.id);
     res.render("detail.ejs" , {post});
 })
-// update
+// update (render edit form)
 app.get("/posts/:id/update" , (req , res)=>{
+
     let {id} = req.params;
     let post = posts.find((p)=>p.id===id);
     res.render("update.ejs" , {post});
+
 })
+
 app.patch("/posts/:id" , (req,res)=>{
     let {id} = req.params;
     let newContent = req.body.content;
@@ -80,6 +84,7 @@ app.delete("/posts/:id",(req,res)=>{
     posts = posts.filter((p)=>p.id!==id);
     res.redirect("/posts");
 })
+
 app.get("*" , (req,res)=>{
     res.send("Invalid route");
 })

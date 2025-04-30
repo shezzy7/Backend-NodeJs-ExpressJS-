@@ -16,9 +16,9 @@ app.get("/ig/:username",(req,res)=>{
 
     let data = instaData[username];
     if(data){
-        res.render("instagram2" , {data});
+        res.render("instagram2.ejs" , {data});
     }
     else{
-        res.render("error");
+        res.render("error.ejs");
     }
 })

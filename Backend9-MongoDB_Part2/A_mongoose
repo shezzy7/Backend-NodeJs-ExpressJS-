@@ -8,11 +8,11 @@ we can read docs for creating schema here -> https://mongoosejs.com/docs/guide.h
 Model:- In mongoose model is a class with which we can construct documents.
 
 syntax-> const User = mongoose.model("User",schemaName);
-Here User is the name of collection and by convention we write it sigular and in model method we also pass name of collection.But mongodb converts this singular name of mode to plural and to small letters.Meean this User will be converted to users.
+Here User is the name of collection and by convention we write it sigular and in model method we also pass name of collection.But mongodb converts this singular name of mode to plural and to small letters.Meean this User will be converted to users.And given schema will be applied to this collection's data.
 
 
 Schema Validations:-
-                    We can also implement constraints on our schema in mongo.for this purpose we write our schema as following
+                    We can also implement constraints on our schema in mongo.For this purpose we write our schema as following
                     const collectionSchema = new mongoose.Schema({
                         attr1 : {
                             type:String/number , 

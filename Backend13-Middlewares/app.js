@@ -5,13 +5,13 @@ app.listen(3000,()=>{
 })
 
 
-app.use("/",(req,res,next)=>{
+app.use("/random",(req,res,next)=>{ //this will run only when we make a request for /random path
     console.log("Hi , i'm 1st middleware");
     console.log("Request method : ",req.method);
     console.log("Request path : " , req.path);
     next();
 })
-app.use((req,res,next)=>{
+app.use((req,res,next)=>{ //this will run every time
     console.log("Hi , i'm 2nd middleware");
     next();
 })

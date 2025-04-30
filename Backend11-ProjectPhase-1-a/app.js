@@ -1,4 +1,5 @@
-
+// In this project we are going to built a website like airbnb.Though it will not contain as many features as original airbnb has but our goal is to achieve the most we can.
+// in this directory we are going to made a basic crud system.
 let express = require("express");
 let app = express();
 let mongoose = require("mongoose");
@@ -48,6 +49,7 @@ app.post("/listings" , async (req,res)=>{
 app.get("/listings/:id" ,async (req,res)=>{
     let {id} = req.params;
     let list = await Listing.findById(id);
+
     res.render("./listing/show.ejs" , {list});
 });
 

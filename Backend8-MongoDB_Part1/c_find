@@ -10,4 +10,4 @@ And if we want to find data of a single document where cith is multan then comma
 We can also pass multiple conditions for finding a specific data.For example we want to find all the documents where city is multan and age is 19 then -> db.collectionName.find({city:"Multan" , age:19})
 
 db.collectionName.find() methods retunrs a cursor(an array of documents is returned in result.Even if there is a single document which is returned then it will also be present in an array like [{}] ) and we also loop on it.
-But our db.collectionName.findOne() returns only a single document
+But our db.collectionName.findOne() returns only a single document(an object not an array like find method)

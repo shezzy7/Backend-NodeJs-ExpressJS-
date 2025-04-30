@@ -2,6 +2,7 @@
 //Then for creating individual objects for each we can create a function which receives name and age of a person and creates object of this info and returns object
 
 function Person(name , age){
+    
     let person = {
         name : name,
         age : age,
@@ -9,7 +10,9 @@ function Person(name , age){
             console.log("Hi")
         }
     }
+
     return person;
+
 }
 let p1 = Person("Adam" , 20);
 console.log(p1.name);

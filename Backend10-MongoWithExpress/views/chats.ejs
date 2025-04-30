@@ -23,12 +23,13 @@
                     <button>Edit</button>
                 </form>
                
-                <form action="/chats/<%=chat._id%>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure you want to delete this?');">
+                <form action="/chats/<%=chat._id%>?_method=DELETE" method="POST" >
                     <button>Delete</button>
                 </form>
                 
             </div>
-            <p>Received By :  <%=chat.to%></p>
+            
+            <p>Received By :  <%=chat.to%> </p>
             <p class="time"><%=chat.created_At.toString().split(" ")[4]%></p>
             
         </div>

@@ -1,5 +1,5 @@
 //Routing is a concept of selecting a path for traffic in a network or between or across multiple networks.
-//Mean if we want to send response for a speacific path or wanna send multiple responses for multiple paths then we can do this using get method of app object.get methos takes two parameters one is path and other is callback.This is alternate of use method for sending response but it is used when we have to send some specific responses for specific paths.
+//Mean if we want to send response for a speacific path or wanna send multiple responses for multiple paths then we can do this using get method of app object.get method takes two parameters one is path and other is callback.This is alternate of use method for sending response but it is used when we have to send some specific responses for specific paths.
 
 const express = require('express');
 let app = express();

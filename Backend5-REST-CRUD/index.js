@@ -15,7 +15,7 @@ app.use(methodOverride('_method'));
 //First we need to require it
 const {v4 : uuidv4} = require("uuid");
 
-    app.listen(port , ()=>{
+app.listen(port , ()=>{
     console.log(`Listening on port number : ${port}`);
 })
 let postTime = new Date();
@@ -72,6 +72,7 @@ app.get("/posts/:id" , (req,res)=>{
     }
 })
 
+// render edit form
 app.get("/posts/:id/edit" , (req,res)=>{
     let {id} = req.params;
     let post = data.find((d)=>id==d.id);

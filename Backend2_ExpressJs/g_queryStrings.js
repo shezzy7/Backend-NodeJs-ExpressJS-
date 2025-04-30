@@ -20,7 +20,7 @@ app.get("/search" , (req,res)=>{
 })*/
 
 
-app.get("/search" , (req,res)=>{
+app.get("/search" , (req,res)=>{    //we will search it like localhost:8000/search?name=someValue&age=someValue
     let {name , age} = req.query;
     res.send(`<h1>His name is ${name} with age ${age}</h1>`);
 })

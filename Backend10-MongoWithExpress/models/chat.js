@@ -17,11 +17,7 @@ let chatSchema = new mongoose.Schema({
     },
     created_At:{
         type:Date,
-
     }
-
 })
-
 let Chat = mongoose.model("Chat" , chatSchema);
-
 module.exports = Chat;

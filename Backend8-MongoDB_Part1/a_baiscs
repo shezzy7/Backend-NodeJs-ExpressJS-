@@ -5,11 +5,11 @@ After installing mongodb we also need to install mongodb shell for web.
 
 command for starting mongodb shell on terminal -> mongosh
 command for creating and use a new database -> use databaseName
-for seeing all the database in the mongodb-> show dbs
+for seeing all the databases in the mongodb-> show dbs
 for quiting mongo shell-> quit
 Mongo shell also works like js runtime environment.
 
-When we write command mongosh then it creates a dummy database named test in mongodb and sets this database by default for performing operation on it.
+When we write command in mongosh then it creates a dummy database named 'test' in mongodb and sets this database by default for performing operation on it.
 When we write command for creating another database then it not only creates another database but also starts using it and the new database remains temporary untill we insert some data in this.If we create a new database in mongoshell and quit our mongosh without inserting any data in this database then this database will be removed automatically.
 
 For checking in which database our mongosh is working we write command db and it returns name of database in which we are working.

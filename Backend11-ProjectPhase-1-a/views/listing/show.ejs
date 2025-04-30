@@ -11,9 +11,11 @@
         <li>Title : <%=list.title%></li>
         <li>Description : <%=list.description%></li>
         <li>Price : <%=list.price.toLocaleString("en-US")%></li>
-        <li>Location : <%=list.locations%></li>
+        <li>Location : <%=list.location%></li>
         <li>Country : <%=list.country%></li>
     </ul>
+    <img style="height: 150px; width: 150px;" src="<%= list.image %>" alt="">
+
     <a href="/listings/<%=list._id%>/edit">Edit</a>
 
     <form action="/listings/<%=list._id%>?_method=DELETE" method="POST">

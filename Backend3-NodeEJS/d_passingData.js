@@ -19,6 +19,6 @@ app.get("/diceroll",(req,res)=>{
 
     let diceVal = Math.floor(Math.random()*6)+1;
     // res.render("diceroll.ejs" , {num:diceVal}); or
-    res.render("diceroll" , {diceVal});
+    res.render("diceroll.ejs" , {diceVal});
     
 })

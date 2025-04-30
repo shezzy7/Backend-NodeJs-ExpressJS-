@@ -29,14 +29,19 @@ main().then(res=>{
 //setting views dir as default path for ejs files.
 app.set("views",path.join(__dirname,"views") );
 app.set("view engine" , "ejs");//setting engine to execute ejs files.
-app.use(express.urlencoded({extended:true}));//for reading coming from request.
+app.use(express.urlencoded({extended:true}));//for reading data coming from request.
 app.engine('ejs' , ejsMate);
-app.use(express.static(path.join(__dirname , "public")));
+app.use(express.static(path.join(__dirname,"public")));
+app.set("views",path.join(__dirname,"views"))
 //see all
 app.get("/listings" ,async  (req,res)=>{
     const listing = await Listing.find({});
     
     res.render("./listing/index.ejs",{listing});
+})
+app.get("/listings",async (req,res,next)=>{
+    let data = await Listing.find({})
+    res.render("./listing/index.ejs",{data})
 })
 //add one
 app.get("/listings/new" , async (req,res)=>{
@@ -55,7 +60,7 @@ app.get("/listings/:id" ,async (req,res)=>{
     res.render("./listing/show.ejs" , {list});
 });
 
-//edit
+//render edit form
 app.get("/listings/:id/edit" , async (req,res)=>{
 
     let {id} = req.params;
@@ -64,6 +69,7 @@ app.get("/listings/:id/edit" , async (req,res)=>{
 
 })
 
+//update
 app.put("/listings/:id" ,async  (req,res)=>{
     let {id} = req.params;
     await Listing.findByIdAndUpdate(id , {...req.body.listing});

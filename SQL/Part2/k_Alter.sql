@@ -65,7 +65,7 @@
 			SELECT * FROM user3;
 
 	-- 5-MODIFY COLUMN(change dataType,constraints):-we can also change any column's dataType,and its constraint
-	-- Syntax-> ALTER TABLE tableName MODIFY COLUMN colName new_dataType newConstraint;
+	-- Syntax-> ALTER TABLE tableName MODIFY COLUMN colName new_dataType newConstraint; 
 	-- 	Example: 
 			CREATE TABLE user3(id int ,name varchar(30),age int,email varchar(50),followers int,following int);
 			INSERT INTO user3 VALUES(1,"Shahzad",21,"shezzy@gmail.com",150,10),(2,"goodo",19,"Zaini@gmail.com",160,5),

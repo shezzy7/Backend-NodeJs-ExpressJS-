@@ -8,9 +8,11 @@
             this.param1 = param2;
             this.param2 = param2;
         }
-        //and if we want ot create some methods for each object we will add write after constructor.
+        //and if we want to create some methods for each object we will add write after constructor.
         funcName(){
+        
             //body
+
         }
     }
 

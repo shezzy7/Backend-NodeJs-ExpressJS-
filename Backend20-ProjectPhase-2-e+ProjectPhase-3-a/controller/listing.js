@@ -74,9 +74,7 @@ module.exports.renderEditForm=async (req, res) => {
     }
     // now we want that while editing a listing a user should be also able to see previous image.But we want to change its pixels for reducing load from website.For reducing pixles of an image cloudaniry provides us a method.In each uploaded link cloudaniry adds an upload route if we go to cloudaniry site then we can see that how we can change pixels.So here we will be first fetching image's url and replaceing "/uploads" by "/uploads/w_300" which will change its pixles and we will change its pixles
     let originalImageUrl = list.image.url;
-    console.log(originalImageUrl);
     originalImageUrl.replace("/upload","/upload/h_250,w_300")
-    console.log(originalImageUrl);
     res.render("./listing/edit.ejs", { list ,originalImageUrl});
 }
 //update a listing
