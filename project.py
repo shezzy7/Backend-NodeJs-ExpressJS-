@@ -21,26 +21,3 @@ if st.button("Send request"):
 
     st.write(result.content)
 
-# Spacer to push footer to the bottom
-st.markdown("<br><br><br><br><br><br><br>", unsafe_allow_html=True)
-
-# Footer with custom HTML and CSS
-st.markdown("""
-    <style>
-    .footer {
-        position: fixed;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        background-color: #f1f1f1;
-        color: #333;
-        text-align: center;
-        padding: 10px;
-        font-size: 14px;
-        border-top: 1px solid #ccc;
-    }
-    </style>
-    <div class="footer">
-        © 2025 Made by Shahzad 
-    </div>
-""", unsafe_allow_html=True)
